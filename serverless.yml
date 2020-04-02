@@ -1,0 +1,55 @@
+service: song-contest-rater
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-central-1
+  stage: dev
+  environment:
+    ACTS_TABLE: 'acts-${opt:stage, self:provider.stage}'
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+      Resource: '*'
+
+plugins:
+  - serverless-bundle
+
+functions:
+  create-act:
+    handler: src/api/act.createAct
+    events:
+      - http:
+          path: acts
+          method: post
+  list-acts:
+    handler: src/api/act.listActs
+    events:
+      - http:
+          path: acts
+          method: get
+
+custom:
+  bundle:
+    linting: false
+
+resources:
+  Resources:
+    artists:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.ACTS_TABLE}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
