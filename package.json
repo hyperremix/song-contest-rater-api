@@ -37,9 +37,13 @@
     "lint-staged": "^10.5.2",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
+    "serverless": "^2.14.0",
     "serverless-bundle": "^4.1.0"
   },
   "dependencies": {
+    "@aws/dynamodb-data-mapper": "^0.7.3",
+    "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
+    "@aws/dynamodb-data-marshaller": "^0.7.3",
     "aws-sdk": "^2.801.0",
     "uuid": "^8.3.1"
   }

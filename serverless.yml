@@ -22,13 +22,13 @@ plugins:
 
 functions:
   create-act:
-    handler: src/api/act.createAct
+    handler: src/act/act-gateway.createAct
     events:
       - http:
           path: acts
           method: post
   list-acts:
-    handler: src/api/act.listActs
+    handler: src/act/act-gateway.listActs
     events:
       - http:
           path: acts
