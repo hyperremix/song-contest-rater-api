@@ -44,6 +44,11 @@
     "@aws/dynamodb-data-mapper": "^0.7.3",
     "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
     "@aws/dynamodb-data-marshaller": "^0.7.3",
+    "@middy/core": "^1.4.0",
+    "@middy/http-error-handler": "^1.4.0",
+    "@middy/http-event-normalizer": "^1.4.0",
+    "@middy/http-header-normalizer": "^1.4.0",
+    "@middy/http-json-body-parser": "^1.4.0",
     "aws-sdk": "^2.801.0",
     "uuid": "^8.3.1"
   }
