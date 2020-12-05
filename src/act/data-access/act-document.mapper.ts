@@ -1,7 +1,13 @@
+import { Injectable, InjectionToken } from 'injection-js';
 import { DocumentMapper } from '../../shared/data-access/document.mapper';
 import { Act } from '../model/act';
 import { ActDocument } from './act-document';
 
+export const ACT_DOCUMENT_MAPPER: InjectionToken<
+  DocumentMapper<Act, ActDocument>
+> = new InjectionToken('ActDocumentMapperToken');
+
+@Injectable()
 export class ActDocumentMapper implements DocumentMapper<Act, ActDocument> {
   public mapManyForward(models: Act[]): ActDocument[] {
     return models.map(this.mapForward);

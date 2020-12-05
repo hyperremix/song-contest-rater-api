@@ -4,7 +4,7 @@ import { DynamoDB } from 'aws-sdk/clients/all';
 const DYNAMODB_ENDPOINT = process.env.SONG_CONTEST_RATER_DYNAMODB_ENDPOINT;
 const IS_OFFLINE = process.env.IS_OFFLINE;
 
-export function getDatabaseClient(): DataMapper {
+export function createDatabaseClient(): DataMapper {
   if (IS_OFFLINE !== 'true') {
     return new DataMapper({ client: new DynamoDB() });
   }
