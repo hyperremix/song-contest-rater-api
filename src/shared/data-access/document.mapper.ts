@@ -1,6 +1,4 @@
 export interface DocumentMapper<T, U> {
-  mapManyForward(models: T[]): U[];
-  mapForward(model: T): U;
-  mapManyBackwards(documents: U[]): T[];
+  mapForwards(model: T): U;
   mapBackwards(document: U): T;
 }
