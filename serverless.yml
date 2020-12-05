@@ -7,7 +7,8 @@ provider:
   region: eu-central-1
   stage: dev
   environment:
-    ACTS_TABLE: 'acts-${opt:stage, self:provider.stage}'
+    SONG_CONTEST_RATER_ACTS_TABLE: '${self:custom.tableNames.acts}-${opt:stage, self:provider.stage}'
+    SONG_CONTEST_RATER_DYNAMODB_ENDPOINT: ${self:custom.endpoints.dynamodb}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -19,6 +20,8 @@ provider:
 
 plugins:
   - serverless-bundle
+  - serverless-dynamodb-local
+  - serverless-offline
 
 functions:
   create-act:
@@ -37,13 +40,22 @@ functions:
 custom:
   bundle:
     linting: false
+  dynamodb:
+    start:
+      migrate: true
+    stages:
+      - local
+  tableNames:
+    acts: 'acts'
+  endpoints:
+    dynamodb: 'http://localhost:8000'
 
 resources:
   Resources:
     artists:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:provider.environment.ACTS_TABLE}
+        TableName: ${self:provider.environment.SONG_CONTEST_RATER_ACTS_TABLE}
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
