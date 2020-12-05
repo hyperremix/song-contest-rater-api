@@ -21,7 +21,7 @@
     ]
   },
   "scripts": {
-    "start": "sls offline start",
+    "start": "sls offline start --stage=local",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "test": "serverless-bundle test"
@@ -52,6 +52,7 @@
     "@middy/http-event-normalizer": "^1.4.0",
     "@middy/http-header-normalizer": "^1.4.0",
     "@middy/http-json-body-parser": "^1.4.0",
+    "@middy/validator": "^1.4.0",
     "aws-sdk": "^2.801.0",
     "uuid": "^8.3.1"
   }

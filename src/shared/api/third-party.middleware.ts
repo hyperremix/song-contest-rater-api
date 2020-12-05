@@ -5,8 +5,9 @@ import httpHeaderNormalizer from '@middy/http-header-normalizer';
 import jsonBodyParser from '@middy/http-json-body-parser';
 
 export const middify = (handler) =>
-  middy(handler)
-    .use(jsonBodyParser())
-    .use(httpHeaderNormalizer())
-    .use(httpEventNormalizer())
-    .use(httpErrorHandler());
+  middy(handler).use([
+    jsonBodyParser(),
+    httpHeaderNormalizer(),
+    httpEventNormalizer(),
+    httpErrorHandler(),
+  ]);
