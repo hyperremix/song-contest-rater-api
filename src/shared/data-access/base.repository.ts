@@ -1,4 +1,3 @@
-import { ZeroArgumentsConstructor } from '@aws/dynamodb-data-marshaller';
 import { DatabaseClient } from './database.client';
 import { DocumentMapper } from './document.mapper';
 
@@ -12,8 +11,8 @@ export abstract class BaseRepository<T, U> {
 
   public abstract list(): Promise<T[]>;
 
-  protected async innerList(valueConstructor: ZeroArgumentsConstructor<U>): Promise<T[]> {
-    return (await this.databaseClient.scan(valueConstructor)).map((document: U) =>
+  protected async innerList(type: { new (): U }): Promise<T[]> {
+    return (await this.databaseClient.scan(type)).map((document: U) =>
       this.mapper.mapBackwards(document)
     );
   }
