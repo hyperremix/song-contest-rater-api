@@ -1,0 +1,149 @@
+_type: export
+__export_format: 4
+__export_date: 2020-12-06T15:30:30.976Z
+__export_source: insomnia.desktop.app:v2020.5.1
+resources:
+  - _id: req_dce5a3a6cc614d16ba375f2ed054b0cc
+    parentId: fld_065a85378b5e40feb9342fe7b899bb52
+    modified: 1607267907120
+    created: 1607267814771
+    url: '{{ _.baseUrl }}/{{ _.endpoint }}'
+    name: all acts
+    description: ''
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: '{{ _.token }}'
+    metaSortKey: -1607267814771
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_065a85378b5e40feb9342fe7b899bb52
+    parentId: wrk_6102c2525c8d4c13b2c9830b14ba78d1
+    modified: 1607267871390
+    created: 1607267643201
+    name: acts
+    description: ''
+    environment:
+      endpoint: acts
+    environmentPropertyOrder:
+      '&':
+        - endpoint
+    metaSortKey: -1607267643201
+    _type: request_group
+  - _id: wrk_6102c2525c8d4c13b2c9830b14ba78d1
+    parentId: null
+    modified: 1607264288611
+    created: 1607264288611
+    name: song-contest-rater
+    description: ''
+    scope: null
+    _type: workspace
+  - _id: req_9b675b42250e4104ad1e546e6fdcedb2
+    parentId: fld_065a85378b5e40feb9342fe7b899bb52
+    modified: 1607267888275
+    created: 1607267666823
+    url: '{{ _.baseUrl }}/{{ _.endpoint }}'
+    name: act
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"artistName": "foo",
+        	"songName": "bar"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_8d83ae9b985c45aa997f4a02f25e77e1
+    authentication:
+      type: bearer
+      token: '{{ _.token }}'
+    metaSortKey: -1607267666823
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_031152dd0aaf4f7c8442593a81f9612c
+    parentId: wrk_6102c2525c8d4c13b2c9830b14ba78d1
+    modified: 1607267605332
+    created: 1607264852222
+    url: '{{ _.loginEndpoint }}'
+    name: token
+    description: ''
+    method: POST
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1607264852222
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_53ef0098572ea5d53aaa9b15d41e4e59c4a44cfc
+    parentId: wrk_6102c2525c8d4c13b2c9830b14ba78d1
+    modified: 1607264547946
+    created: 1607264288642
+    name: Base Environment
+    data:
+      appName: song-contest-rater
+    dataPropertyOrder:
+      '&':
+        - appName
+    color: null
+    isPrivate: false
+    metaSortKey: 1607264288642
+    _type: environment
+  - _id: jar_53ef0098572ea5d53aaa9b15d41e4e59c4a44cfc
+    parentId: wrk_6102c2525c8d4c13b2c9830b14ba78d1
+    modified: 1607268614207
+    created: 1607264288643
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_70ed9db5cfd24668b0588d111191d26a
+    parentId: wrk_6102c2525c8d4c13b2c9830b14ba78d1
+    modified: 1607264288613
+    created: 1607264288613
+    fileName: song-contest-rater
+    contents: ''
+    contentType: yaml
+    _type: api_spec
+  - _id: env_09661335501843248d106e2592da6f6b
+    parentId: env_53ef0098572ea5d53aaa9b15d41e4e59c4a44cfc
+    modified: 1607268192603
+    created: 1607268053612
+    name: local
+    data:
+      stage: local
+      baseUrl: http://localhost:3000/{{ _.stage }}
+      token: ''
+    dataPropertyOrder:
+      '&':
+        - stage
+        - baseUrl
+        - token
+    color: null
+    isPrivate: false
+    metaSortKey: 1607268053612
+    _type: environment
