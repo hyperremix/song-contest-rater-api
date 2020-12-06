@@ -24,28 +24,6 @@ plugins:
   - serverless-offline
   - serverless-pseudo-parameters
 
-functions:
-  createAct:
-    handler: src/act/act-gateway.createAct
-    events:
-      - http:
-          path: acts
-          method: post
-          authorizer:
-            type: COGNITO_USER_POOLS
-            authorizerId:
-              Ref: ApiGatewayAdminAuthorizer
-  listActs:
-    handler: src/act/act-gateway.listActs
-    events:
-      - http:
-          path: acts
-          method: get
-          authorizer:
-            type: COGNITO_USER_POOLS
-            authorizerId:
-              Ref: ApiGatewayAuthorizer
-
 custom:
   bundle:
     linting: false
@@ -59,85 +37,9 @@ custom:
   endpoints:
     dynamodb: 'http://localhost:8000'
 
+functions:
+  - ${file(infrastructure/act/functions.yml)}
+
 resources:
-  Resources:
-    ActsTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: ${self:provider.environment.SONG_CONTEST_RATER_ACTS_TABLE}
-        AttributeDefinitions:
-          - AttributeName: id
-            AttributeType: S
-        KeySchema:
-          - AttributeName: id
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-    CognitoUserPool:
-      Type: 'AWS::Cognito::UserPool'
-      Properties:
-        MfaConfiguration: OFF
-        UserPoolName: '${self:service}-user-pool-${opt:stage, self:provider.stage}'
-        UsernameAttributes:
-          - email
-        Policies:
-          PasswordPolicy:
-            MinimumLength: 8
-            RequireLowercase: True
-            RequireNumbers: True
-            RequireSymbols: False
-            RequireUppercase: True
-    CognitoAdminUserPool:
-      Type: 'AWS::Cognito::UserPool'
-      Properties:
-        MfaConfiguration: OFF
-        UserPoolName: '${self:service}-admin-user-pool-${opt:stage, self:provider.stage}'
-        UsernameAttributes:
-          - email
-        Policies:
-          PasswordPolicy:
-            MinimumLength: 8
-            RequireLowercase: True
-            RequireNumbers: True
-            RequireSymbols: False
-            RequireUppercase: True
-    CognitoUserPoolClient:
-      Type: 'AWS::Cognito::UserPoolClient'
-      Properties:
-        ClientName: '${self:service}-user-pool-client-${opt:stage, self:provider.stage}'
-        GenerateSecret: False
-        UserPoolId:
-          Ref: CognitoUserPool
-    CognitoAdminUserPoolClient:
-      Type: 'AWS::Cognito::UserPoolClient'
-      Properties:
-        ClientName: '${self:service}-admin-user-pool-client-${opt:stage, self:provider.stage}'
-        GenerateSecret: False
-        UserPoolId:
-          Ref: CognitoAdminUserPool
-    ApiGatewayAuthorizer:
-      DependsOn:
-        - ApiGatewayRestApi
-      Type: AWS::ApiGateway::Authorizer
-      Properties:
-        Name: cognito-authorizer
-        IdentitySource: method.request.header.Authorization
-        RestApiId:
-          Ref: ApiGatewayRestApi
-        Type: COGNITO_USER_POOLS
-        ProviderARNs:
-          - !GetAtt CognitoUserPool.Arn
-          - !GetAtt CognitoAdminUserPool.Arn
-    ApiGatewayAdminAuthorizer:
-      DependsOn:
-        - ApiGatewayRestApi
-      Type: AWS::ApiGateway::Authorizer
-      Properties:
-        Name: cognito-admin-authorizer
-        IdentitySource: method.request.header.Authorization
-        RestApiId:
-          Ref: ApiGatewayRestApi
-        Type: COGNITO_USER_POOLS
-        ProviderARNs:
-          - !GetAtt CognitoAdminUserPool.Arn
+  - ${file(infrastructure/act/resources.yml)}
+  - ${file(infrastructure/shared/resources.yml)}

@@ -1,0 +1,20 @@
+createAct:
+  handler: src/act/act-gateway.createAct
+  events:
+    - http:
+        path: acts
+        method: post
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAdminAuthorizer
+listActs:
+  handler: src/act/act-gateway.listActs
+  events:
+    - http:
+        path: acts
+        method: get
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
