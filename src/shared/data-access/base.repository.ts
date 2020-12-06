@@ -16,4 +16,11 @@ export abstract class BaseRepository<T, U> {
       this.mapper.mapBackwards(document)
     );
   }
+
+  public abstract get(id: string): Promise<T>;
+
+  public async innerGet(query: U): Promise<T> {
+    const result = await this.databaseClient.get(query);
+    return this.mapper.mapBackwards(result);
+  }
 }

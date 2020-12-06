@@ -13,6 +13,7 @@ describe('ActRepository', () => {
     databaseClient = {
       scan: jest.fn(() => Promise.resolve([defaultActDocument])),
       put: jest.fn(() => Promise.resolve()),
+      get: jest.fn(() => Promise.resolve(defaultActDocument)),
     };
 
     mapper = {
@@ -63,6 +64,27 @@ describe('ActRepository', () => {
 
       // assert
       expect(result).toEqual([defaultAct, extraAct]);
+    });
+  });
+
+  describe('when getting', () => {
+    it('then the act document is mapped', async () => {
+      // act
+      await actRepository.get(defaultActDocument.id);
+
+      // assert
+      expect(mapper.mapBackwards).toHaveBeenCalledWith(defaultActDocument);
+    });
+
+    it('then the act is returned', async () => {
+      // arrange
+      mapper.mapBackwards.mockReturnValue(defaultAct);
+
+      // act
+      const result = await actRepository.get(defaultActDocument.id);
+
+      // assert
+      expect(result).toBe(defaultAct);
     });
   });
 });

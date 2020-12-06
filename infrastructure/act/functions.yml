@@ -18,3 +18,13 @@ listActs:
           type: COGNITO_USER_POOLS
           authorizerId:
             Ref: ApiGatewayAuthorizer
+getAct:
+  handler: src/act/act-gateway.getAct
+  events:
+    - http:
+        path: acts/{id}
+        method: get
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer

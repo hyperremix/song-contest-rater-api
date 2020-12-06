@@ -19,4 +19,8 @@ export class DatabaseClient {
 
     return result;
   }
+
+  public async get<T>(item: T): Promise<T> {
+    return await this.dataMapper.get(item);
+  }
 }

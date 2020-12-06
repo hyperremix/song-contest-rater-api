@@ -14,6 +14,7 @@ describe('ActController', () => {
     actRepository = {
       insert: jest.fn(),
       list: jest.fn(() => Promise.resolve(acts)),
+      get: jest.fn(() => Promise.resolve(defaultAct)),
     };
 
     actController = new ActController(actRepository);
@@ -31,12 +32,21 @@ describe('ActController', () => {
 
   describe('when listing', () => {
     it('then acts are returned from the repository', async () => {
-      // arrange
       // act
       const result = await actController.list();
 
       // arrange
       expect(result).toEqual(acts);
+    });
+  });
+
+  describe('when getting', () => {
+    it('then acts are returned from the repository', async () => {
+      // act
+      const result = await actController.get(defaultAct.id);
+
+      // arrange
+      expect(result).toEqual(defaultAct);
     });
   });
 });

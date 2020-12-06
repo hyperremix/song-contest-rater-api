@@ -18,4 +18,10 @@ export class ActRepository extends BaseRepository<Act, ActDocument> {
   public async list(): Promise<Act[]> {
     return await this.innerList(ActDocument);
   }
+
+  public async get(id: string): Promise<Act> {
+    const query = new ActDocument();
+    query.id = id;
+    return await this.innerGet(query);
+  }
 }
