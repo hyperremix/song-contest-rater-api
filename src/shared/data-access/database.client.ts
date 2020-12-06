@@ -6,8 +6,8 @@ import { Injectable } from 'injection-js';
 export class DatabaseClient {
   constructor(private dataMapper: DataMapper) {}
 
-  public async put<T>(item: T): Promise<void> {
-    await this.dataMapper.put(item);
+  public async put<T>(item: T): Promise<T> {
+    return await this.dataMapper.put(item);
   }
 
   public async scan<T>(valueConstructor: ZeroArgumentsConstructor<T>): Promise<T[]> {

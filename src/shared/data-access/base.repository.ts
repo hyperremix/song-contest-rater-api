@@ -5,8 +5,9 @@ import { DocumentMapper } from './document.mapper';
 export abstract class BaseRepository<T, U> {
   constructor(private databaseClient: DatabaseClient, private mapper: DocumentMapper<T, U>) {}
 
-  public async insert(item: T): Promise<void> {
-    await this.databaseClient.put(this.mapper.mapForwards(item));
+  public async insert(item: T): Promise<T> {
+    const result = await this.databaseClient.put(this.mapper.mapForwards(item));
+    return this.mapper.mapBackwards(result);
   }
 
   public abstract list(): Promise<T[]>;

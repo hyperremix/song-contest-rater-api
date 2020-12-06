@@ -5,9 +5,9 @@ import { createResponse } from '../shared/api/response.factory';
 import { getActController } from './act-context';
 import { actBaseSchema } from './model/act';
 
-export const createAct = middify(async (event) => {
-  await getActController().create(event.body);
-  return createResponse(201);
+export const createAct = middify(async ({ body }) => {
+  const result = await getActController().create(body);
+  return createResponse(201, result);
 }).use(validator({ inputSchema: createCreateInputSchema(actBaseSchema) }));
 
 export const listActs = middify(async () => {
