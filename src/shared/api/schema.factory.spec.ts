@@ -1,7 +1,7 @@
-import { createCreateInputSchema } from './schema.factory';
+import { createInputSchema } from './schema.factory';
 
-describe('when creating CreateInputSchema', () => {
-  const createInputSchema = {
+describe('when creating input schema', () => {
+  const inputSchema = {
     required: ['test'],
     properties: {
       test: {
@@ -12,7 +12,7 @@ describe('when creating CreateInputSchema', () => {
 
   it('then body is required', () => {
     // act
-    const result = createCreateInputSchema(createInputSchema);
+    const result = createInputSchema(inputSchema);
 
     // assert
     expect(result.required).toEqual(['body']);
@@ -20,9 +20,9 @@ describe('when creating CreateInputSchema', () => {
 
   it('then body contains parameter schema', () => {
     // act
-    const result = createCreateInputSchema(createInputSchema);
+    const result = createInputSchema(inputSchema);
 
     // assert
-    expect(result.properties.body).toEqual({ ...createInputSchema, type: 'object' });
+    expect(result.properties.body).toEqual({ ...inputSchema, type: 'object' });
   });
 });

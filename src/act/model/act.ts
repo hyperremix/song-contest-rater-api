@@ -4,9 +4,12 @@ export interface Act {
   songName: string;
 }
 
-export const actBaseSchema = {
+export const actSchema = {
   required: ['artistName', 'songName'],
   properties: {
+    id: {
+      type: 'string',
+    },
     artistName: {
       type: 'string',
     },

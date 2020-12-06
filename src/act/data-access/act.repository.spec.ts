@@ -12,13 +12,14 @@ describe('ActRepository', () => {
   beforeEach(() => {
     databaseClient = {
       scan: jest.fn(() => Promise.resolve([defaultActDocument])),
-      put: jest.fn(() => Promise.resolve()),
+      put: jest.fn(() => Promise.resolve(defaultActDocument)),
       get: jest.fn(() => Promise.resolve(defaultActDocument)),
+      update: jest.fn(() => Promise.resolve(defaultActDocument)),
     };
 
     mapper = {
       mapForwards: jest.fn(() => defaultActDocument),
-      mapBackwards: jest.fn(),
+      mapBackwards: jest.fn(() => defaultAct),
     };
 
     actRepository = new ActRepository(databaseClient, mapper);
@@ -30,15 +31,23 @@ describe('ActRepository', () => {
       await actRepository.insert(defaultAct);
 
       // assert
-      expect(mapper.mapForwards).toHaveBeenCalled();
+      expect(mapper.mapForwards).toHaveBeenCalledWith(defaultAct);
     });
 
-    it('then the act document is put into the database', async () => {
+    it('then the act document is mapped', async () => {
       // act
       await actRepository.insert(defaultAct);
 
       // assert
-      expect(databaseClient.put).toHaveBeenCalledWith(defaultActDocument);
+      expect(mapper.mapBackwards).toHaveBeenCalledWith(defaultActDocument);
+    });
+
+    it('then the act document is returned', async () => {
+      // act
+      const result = await actRepository.insert(defaultAct);
+
+      // assert
+      expect(result).toBe(defaultAct);
     });
   });
 
@@ -70,16 +79,39 @@ describe('ActRepository', () => {
   describe('when getting', () => {
     it('then the act document is mapped', async () => {
       // act
-      await actRepository.get(defaultActDocument.id);
+      await actRepository.get(defaultAct.id);
 
       // assert
       expect(mapper.mapBackwards).toHaveBeenCalledWith(defaultActDocument);
     });
 
     it('then the act is returned', async () => {
-      // arrange
-      mapper.mapBackwards.mockReturnValue(defaultAct);
+      // act
+      const result = await actRepository.get(defaultAct.id);
 
+      // assert
+      expect(result).toBe(defaultAct);
+    });
+  });
+
+  describe('when updating', () => {
+    it('then the act is mapped', async () => {
+      // act
+      await actRepository.update(defaultAct);
+
+      // assert
+      expect(mapper.mapForwards).toHaveBeenCalledWith(defaultAct);
+    });
+
+    it('then the act document is mapped', async () => {
+      // act
+      await actRepository.update(defaultAct);
+
+      // assert
+      expect(mapper.mapBackwards).toHaveBeenCalledWith(defaultActDocument);
+    });
+
+    it('then the act is returned', async () => {
       // act
       const result = await actRepository.get(defaultActDocument.id);
 

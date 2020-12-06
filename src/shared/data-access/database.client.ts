@@ -23,4 +23,8 @@ export class DatabaseClient {
   public async get<T>(item: T): Promise<T> {
     return await this.dataMapper.get(item);
   }
+
+  public async update<T>(item: T): Promise<T> {
+    return await this.dataMapper.update(item);
+  }
 }

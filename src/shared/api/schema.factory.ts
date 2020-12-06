@@ -1,4 +1,4 @@
-export function createCreateInputSchema(inputSchema: any): any {
+export function createInputSchema(inputSchema: any): any {
   return {
     required: ['body'],
     properties: {

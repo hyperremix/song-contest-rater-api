@@ -1,23 +1,30 @@
 _type: export
 __export_format: 4
-__export_date: 2020-12-06T20:59:52.470Z
+__export_date: 2020-12-06T21:01:52.100Z
 __export_source: insomnia.desktop.app:v2020.5.1
 resources:
-  - _id: req_d6d470a6743d4025b8d09af39c432986
+  - _id: req_7e90a535dc5840fd9429f44796b48a48
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
-    modified: 1607278025451
-    created: 1607275627410
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/ef09a456-342a-4ed9-a775-4a5926bb55de"
+    modified: 1607288191656
+    created: 1607287846720
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/414933cf-9ef4-4b3f-b4d8-aae5dab4e2c1"
     name: act
     description: ""
-    method: GET
-    body: {}
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"artistName": "updated artistName",
+        	"songName": "updated songName"
+        }
     parameters: []
-    headers: []
-    authentication:
-      type: bearer
-      token: "{{ _.token }}"
-    metaSortKey: -1607275627410
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b8736c00332046d28d64eb063e80c0d6
+    authentication: {}
+    metaSortKey: -1607287846721
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -47,6 +54,29 @@ resources:
     description: ""
     scope: null
     _type: workspace
+  - _id: req_d6d470a6743d4025b8d09af39c432986
+    parentId: fld_065a85378b5e40feb9342fe7b899bb52
+    modified: 1607278025451
+    created: 1607275627410
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/ef09a456-342a-4ed9-a775-4a5926bb55de"
+    name: act
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607275627410
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_dce5a3a6cc614d16ba375f2ed054b0cc
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
     modified: 1607267907120

@@ -12,9 +12,10 @@ describe('ActController', () => {
 
   beforeEach(() => {
     actRepository = {
-      insert: jest.fn(),
+      insert: jest.fn(() => Promise.resolve(defaultAct)),
       list: jest.fn(() => Promise.resolve(acts)),
       get: jest.fn(() => Promise.resolve(defaultAct)),
+      update: jest.fn(() => Promise.resolve(defaultAct)),
     };
 
     actController = new ActController(actRepository);
@@ -27,6 +28,14 @@ describe('ActController', () => {
 
       // arrange
       expect(actRepository.insert).toHaveBeenCalled();
+    });
+
+    it('then the act is returned', async () => {
+      // act
+      const result = await actController.create(defaultAct);
+
+      // arrange
+      expect(result).toBe(defaultAct);
     });
   });
 
@@ -41,12 +50,30 @@ describe('ActController', () => {
   });
 
   describe('when getting', () => {
-    it('then acts are returned from the repository', async () => {
+    it('then the act is returned from the repository', async () => {
       // act
       const result = await actController.get(defaultAct.id);
 
       // arrange
       expect(result).toEqual(defaultAct);
+    });
+  });
+
+  describe('when updating', () => {
+    it('then the act is updated in the repository', async () => {
+      // act
+      await actController.update(defaultAct);
+
+      // arrange
+      expect(actRepository.update).toHaveBeenCalled();
+    });
+
+    it('then the act is returned', async () => {
+      // act
+      const result = await actController.update(defaultAct);
+
+      // arrange
+      expect(result).toBe(defaultAct);
     });
   });
 });

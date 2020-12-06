@@ -28,3 +28,13 @@ getAct:
           type: COGNITO_USER_POOLS
           authorizerId:
             Ref: ApiGatewayAuthorizer
+updateAct:
+  handler: src/act/act-gateway.updateAct
+  events:
+    - http:
+        path: acts/{id}
+        method: put
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAdminAuthorizer

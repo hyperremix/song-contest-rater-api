@@ -17,4 +17,8 @@ export class ActController {
   public async get(id: string): Promise<Act> {
     return await this.actRepository.get(id);
   }
+
+  public async update(act: Act): Promise<Act> {
+    return await this.actRepository.update(act);
+  }
 }
