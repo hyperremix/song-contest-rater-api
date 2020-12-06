@@ -28,4 +28,11 @@ export abstract class BaseRepository<T, U> {
     const result = await this.databaseClient.update(this.mapper.mapForwards(item));
     return this.mapper.mapBackwards(result);
   }
+
+  public abstract delete(id: string): Promise<T>;
+
+  public async innerDelete(query: U): Promise<T> {
+    const result = await this.databaseClient.delete(query);
+    return this.mapper.mapBackwards(result);
+  }
 }

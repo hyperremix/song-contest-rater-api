@@ -38,3 +38,13 @@ updateAct:
           type: COGNITO_USER_POOLS
           authorizerId:
             Ref: ApiGatewayAdminAuthorizer
+deleteAct:
+  handler: src/act/act-gateway.deleteAct
+  events:
+    - http:
+        path: acts/{id}
+        method: delete
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAdminAuthorizer

@@ -25,3 +25,8 @@ export const updateAct = middify(async ({ body, pathParameters: { id } }) => {
   const result = await getActController().update(bodyWithId);
   return createResponse(200, result);
 }).use(validator({ inputSchema: createInputSchema(actSchema) }));
+
+export const deleteAct = middify(async ({ pathParameters: { id } }) => {
+  const result = await getActController().delete(id);
+  return createResponse(200, result);
+});

@@ -16,6 +16,7 @@ describe('ActController', () => {
       list: jest.fn(() => Promise.resolve(acts)),
       get: jest.fn(() => Promise.resolve(defaultAct)),
       update: jest.fn(() => Promise.resolve(defaultAct)),
+      delete: jest.fn(() => Promise.resolve(defaultAct)),
     };
 
     actController = new ActController(actRepository);
@@ -74,6 +75,16 @@ describe('ActController', () => {
 
       // arrange
       expect(result).toBe(defaultAct);
+    });
+  });
+
+  describe('when deleting', () => {
+    it('then the deleted act is returned from the repository', async () => {
+      // act
+      const result = await actController.delete(defaultAct.id);
+
+      // arrange
+      expect(result).toEqual(defaultAct);
     });
   });
 });

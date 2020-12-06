@@ -21,4 +21,8 @@ export class ActController {
   public async update(act: Act): Promise<Act> {
     return await this.actRepository.update(act);
   }
+
+  public async delete(id: string): Promise<Act> {
+    return await this.actRepository.delete(id);
+  }
 }

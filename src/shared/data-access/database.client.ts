@@ -27,4 +27,8 @@ export class DatabaseClient {
   public async update<T>(item: T): Promise<T> {
     return await this.dataMapper.update(item);
   }
+
+  public async delete<T>(item: T): Promise<T> {
+    return await this.dataMapper.delete(item);
+  }
 }

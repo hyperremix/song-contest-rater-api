@@ -1,30 +1,23 @@
 _type: export
 __export_format: 4
-__export_date: 2020-12-06T21:01:52.100Z
+__export_date: 2020-12-06T21:19:16.871Z
 __export_source: insomnia.desktop.app:v2020.5.1
 resources:
-  - _id: req_7e90a535dc5840fd9429f44796b48a48
+  - _id: req_32cb96288bbe4617a0269e7de237c35f
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
-    modified: 1607288191656
-    created: 1607287846720
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/414933cf-9ef4-4b3f-b4d8-aae5dab4e2c1"
+    modified: 1607289514852
+    created: 1607289441134
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/47a1e5b5-b79d-4ef5-992c-c9927cb8b25d"
     name: act
     description: ""
-    method: PUT
-    body:
-      mimeType: application/json
-      text: |-
-        {
-        	"artistName": "updated artistName",
-        	"songName": "updated songName"
-        }
+    method: DELETE
+    body: {}
     parameters: []
-    headers:
-      - name: Content-Type
-        value: application/json
-        id: pair_b8736c00332046d28d64eb063e80c0d6
-    authentication: {}
-    metaSortKey: -1607287846721
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607289441134
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -54,6 +47,38 @@ resources:
     description: ""
     scope: null
     _type: workspace
+  - _id: req_7e90a535dc5840fd9429f44796b48a48
+    parentId: fld_065a85378b5e40feb9342fe7b899bb52
+    modified: 1607289461005
+    created: 1607287846720
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/414933cf-9ef4-4b3f-b4d8-aae5dab4e2c1"
+    name: act
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"artistName": "updated artistName",
+        	"songName": "updated songName"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b8736c00332046d28d64eb063e80c0d6
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607287846721
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_d6d470a6743d4025b8d09af39c432986
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
     modified: 1607278025451

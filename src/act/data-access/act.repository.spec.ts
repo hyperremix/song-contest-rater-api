@@ -15,6 +15,7 @@ describe('ActRepository', () => {
       put: jest.fn(() => Promise.resolve(defaultActDocument)),
       get: jest.fn(() => Promise.resolve(defaultActDocument)),
       update: jest.fn(() => Promise.resolve(defaultActDocument)),
+      delete: jest.fn(() => Promise.resolve(defaultActDocument)),
     };
 
     mapper = {
@@ -114,6 +115,24 @@ describe('ActRepository', () => {
     it('then the act is returned', async () => {
       // act
       const result = await actRepository.get(defaultActDocument.id);
+
+      // assert
+      expect(result).toBe(defaultAct);
+    });
+  });
+
+  describe('when deleting', () => {
+    it('then the act document is mapped', async () => {
+      // act
+      await actRepository.delete(defaultAct.id);
+
+      // assert
+      expect(mapper.mapBackwards).toHaveBeenCalledWith(defaultActDocument);
+    });
+
+    it('then the deleted act is returned', async () => {
+      // act
+      const result = await actRepository.delete(defaultAct.id);
 
       // assert
       expect(result).toBe(defaultAct);
