@@ -1,6 +1,6 @@
+import { Act } from '@hyperremix/song-contest-rater-model';
 import { Injectable, InjectionToken } from 'injection-js';
 import { DocumentMapper } from '../../shared/data-access/document.mapper';
-import { Act } from '../model/act';
 import { ActDocument } from './act-document';
 
 export const ACT_DOCUMENT_MAPPER: InjectionToken<

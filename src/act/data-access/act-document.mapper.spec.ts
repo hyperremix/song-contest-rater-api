@@ -1,4 +1,4 @@
-import { defaultAct } from '../model/act';
+import { defaultAct } from '@hyperremix/song-contest-rater-model';
 import { defaultActDocument } from './act-document';
 import { ActDocumentMapper } from './act-document.mapper';
 

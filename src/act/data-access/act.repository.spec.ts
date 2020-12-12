@@ -1,5 +1,5 @@
+import { defaultAct } from '@hyperremix/song-contest-rater-model';
 import { Builder } from 'builder-pattern';
-import { defaultAct } from '../model/act';
 import { defaultActDocument } from './act-document';
 import { ActRepository } from './act.repository';
 

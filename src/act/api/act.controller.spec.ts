@@ -1,6 +1,6 @@
+import { defaultAct } from '@hyperremix/song-contest-rater-model';
 import { Builder } from 'builder-pattern';
 import 'reflect-metadata';
-import { defaultAct } from '../model/act';
 import { ActController } from './act.controller';
 
 describe('ActController', () => {

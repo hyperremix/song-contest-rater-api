@@ -1,9 +1,9 @@
+import { actSchema } from '@hyperremix/song-contest-rater-model';
 import validator from '@middy/validator';
 import { createInputSchema } from 'src/shared/api/schema.factory';
 import { middify } from 'src/shared/api/third-party.middleware';
 import { createResponse } from '../shared/api/response.factory';
 import { getActController } from './act-context';
-import { actSchema } from './model/act';
 
 export const createAct = middify(async ({ body }) => {
   const result = await getActController().create(body);

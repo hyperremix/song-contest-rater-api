@@ -1,6 +1,6 @@
+import { Act } from '@hyperremix/song-contest-rater-model';
 import { Injectable } from 'injection-js';
 import { ActRepository } from '../data-access/act.repository';
-import { Act } from '../model/act';
 
 @Injectable()
 export class ActController {
