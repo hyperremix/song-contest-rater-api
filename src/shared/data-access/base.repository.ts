@@ -1,3 +1,4 @@
+import httpErrors from 'http-errors';
 import { DatabaseClient } from './database.client';
 import { DocumentMapper } from './document.mapper';
 
@@ -20,11 +21,16 @@ export abstract class BaseRepository<T, U> {
   public abstract get(id: string): Promise<T>;
 
   public async innerGet(query: U): Promise<T> {
-    const result = await this.databaseClient.get(query);
-    return this.mapper.mapBackwards(result);
+    try {
+      const result = await this.databaseClient.get(query);
+      return this.mapper.mapBackwards(result);
+    } catch (error) {
+      throw new httpErrors.NotFound();
+    }
   }
 
   public async update(item: T): Promise<T> {
+    await this.get(item['id']);
     const result = await this.databaseClient.update(this.mapper.mapForwards(item));
     return this.mapper.mapBackwards(result);
   }
