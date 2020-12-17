@@ -1,0 +1,50 @@
+createCompetition:
+  handler: src/competition/competition-gateway.createCompetition
+  events:
+    - http:
+        path: competitions
+        method: post
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAdminAuthorizer
+listCompetitions:
+  handler: src/competition/competition-gateway.listCompetitions
+  events:
+    - http:
+        path: competitions
+        method: get
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+getCompetition:
+  handler: src/competition/competition-gateway.getCompetition
+  events:
+    - http:
+        path: competitions/{id}
+        method: get
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+updateCompetition:
+  handler: src/competition/competition-gateway.updateCompetition
+  events:
+    - http:
+        path: competitions/{id}
+        method: put
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAdminAuthorizer
+deleteCompetition:
+  handler: src/competition/competition-gateway.deleteCompetition
+  events:
+    - http:
+        path: competitions/{id}
+        method: delete
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAdminAuthorizer

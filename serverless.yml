@@ -8,6 +8,7 @@ provider:
   stage: dev
   environment:
     SONG_CONTEST_RATER_ACTS_TABLE: '${self:custom.tableNames.acts}-${opt:stage, self:provider.stage}'
+    SONG_CONTEST_RATER_COMPETITIONS_TABLE: '${self:custom.tableNames.competitions}-${opt:stage, self:provider.stage}'
     SONG_CONTEST_RATER_DYNAMODB_ENDPOINT: ${self:custom.endpoints.dynamodb}
   iamRoleStatements:
     - Effect: Allow
@@ -34,12 +35,15 @@ custom:
       - local
   tableNames:
     acts: 'acts'
+    competitions: 'competitions'
   endpoints:
     dynamodb: 'http://localhost:8000'
 
 functions:
   - ${file(infrastructure/act/functions.yml)}
+  - ${file(infrastructure/competition/functions.yml)}
 
 resources:
   - ${file(infrastructure/act/resources.yml)}
+  - ${file(infrastructure/competition/resources.yml)}
   - ${file(infrastructure/shared/resources.yml)}
