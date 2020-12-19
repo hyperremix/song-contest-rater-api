@@ -23,7 +23,6 @@ plugins:
   - serverless-bundle
   - serverless-dynamodb-local
   - serverless-offline
-  - serverless-pseudo-parameters
 
 custom:
   bundle:
