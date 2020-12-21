@@ -4,6 +4,7 @@ createCompetition:
     - http:
         path: competitions
         method: post
+        cors: true
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
@@ -14,6 +15,7 @@ listCompetitions:
     - http:
         path: competitions
         method: get
+        cors: true
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
@@ -24,6 +26,7 @@ getCompetition:
     - http:
         path: competitions/{id}
         method: get
+        cors: true
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
@@ -34,6 +37,7 @@ updateCompetition:
     - http:
         path: competitions/{id}
         method: put
+        cors: true
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
@@ -44,6 +48,7 @@ deleteCompetition:
     - http:
         path: competitions/{id}
         method: delete
+        cors: true
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:

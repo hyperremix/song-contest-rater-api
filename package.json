@@ -53,6 +53,7 @@
     "@aws/dynamodb-data-marshaller": "^0.7.3",
     "@hyperremix/song-contest-rater-model": "^1.1.1",
     "@middy/core": "^1.4.0",
+    "@middy/http-cors": "^1.5.0",
     "@middy/http-error-handler": "^1.4.0",
     "@middy/http-event-normalizer": "^1.4.0",
     "@middy/http-header-normalizer": "^1.4.0",

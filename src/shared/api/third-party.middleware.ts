@@ -1,4 +1,5 @@
 import middy from '@middy/core';
+import cors from '@middy/http-cors';
 import httpErrorHandler from '@middy/http-error-handler';
 import httpEventNormalizer from '@middy/http-event-normalizer';
 import httpHeaderNormalizer from '@middy/http-header-normalizer';
@@ -10,4 +11,5 @@ export const middify = (handler) =>
     httpHeaderNormalizer(),
     httpEventNormalizer(),
     httpErrorHandler(),
+    cors(),
   ]);
