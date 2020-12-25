@@ -8,7 +8,7 @@ createCompetition:
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
-            Ref: ApiGatewayAdminAuthorizer
+            Ref: ApiGatewayAuthorizer
 listCompetitions:
   handler: src/competition/competition-gateway.listCompetitions
   events:
@@ -41,7 +41,7 @@ updateCompetition:
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
-            Ref: ApiGatewayAdminAuthorizer
+            Ref: ApiGatewayAuthorizer
 deleteCompetition:
   handler: src/competition/competition-gateway.deleteCompetition
   events:
@@ -52,4 +52,4 @@ deleteCompetition:
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
-            Ref: ApiGatewayAdminAuthorizer
+            Ref: ApiGatewayAuthorizer

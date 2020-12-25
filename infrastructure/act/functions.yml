@@ -8,7 +8,7 @@ createAct:
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
-            Ref: ApiGatewayAdminAuthorizer
+            Ref: ApiGatewayAuthorizer
 listActs:
   handler: src/act/act-gateway.listActs
   events:
@@ -41,7 +41,7 @@ updateAct:
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
-            Ref: ApiGatewayAdminAuthorizer
+            Ref: ApiGatewayAuthorizer
 deleteAct:
   handler: src/act/act-gateway.deleteAct
   events:
@@ -52,4 +52,4 @@ deleteAct:
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
-            Ref: ApiGatewayAdminAuthorizer
+            Ref: ApiGatewayAuthorizer

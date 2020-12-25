@@ -13,20 +13,6 @@ Resources:
           RequireNumbers: True
           RequireSymbols: False
           RequireUppercase: True
-  CognitoAdminUserPool:
-    Type: 'AWS::Cognito::UserPool'
-    Properties:
-      MfaConfiguration: OFF
-      UserPoolName: '${self:service}-admin-user-pool-${opt:stage, self:provider.stage}'
-      UsernameAttributes:
-        - email
-      Policies:
-        PasswordPolicy:
-          MinimumLength: 8
-          RequireLowercase: True
-          RequireNumbers: True
-          RequireSymbols: False
-          RequireUppercase: True
   CognitoUserPoolClient:
     Type: 'AWS::Cognito::UserPoolClient'
     Properties:
@@ -34,13 +20,13 @@ Resources:
       GenerateSecret: False
       UserPoolId:
         Ref: CognitoUserPool
-  CognitoAdminUserPoolClient:
-    Type: 'AWS::Cognito::UserPoolClient'
+  CognitoAdminUserGroup:
+    Type: AWS::Cognito::UserPoolGroup
     Properties:
-      ClientName: '${self:service}-admin-user-pool-client-${opt:stage, self:provider.stage}'
-      GenerateSecret: False
+      GroupName: Admin
+      Precedence: 1
       UserPoolId:
-        Ref: CognitoAdminUserPool
+        Ref: CognitoUserPool
   ApiGatewayAuthorizer:
     DependsOn:
       - ApiGatewayRestApi
@@ -53,19 +39,6 @@ Resources:
       Type: COGNITO_USER_POOLS
       ProviderARNs:
         - !GetAtt CognitoUserPool.Arn
-        - !GetAtt CognitoAdminUserPool.Arn
-  ApiGatewayAdminAuthorizer:
-    DependsOn:
-      - ApiGatewayRestApi
-    Type: AWS::ApiGateway::Authorizer
-    Properties:
-      Name: cognito-admin-authorizer
-      IdentitySource: method.request.header.Authorization
-      RestApiId:
-        Ref: ApiGatewayRestApi
-      Type: COGNITO_USER_POOLS
-      ProviderARNs:
-        - !GetAtt CognitoAdminUserPool.Arn
   GatewayResponseDefault4XX:
     Type: 'AWS::ApiGateway::GatewayResponse'
     Properties:
