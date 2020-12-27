@@ -6,6 +6,8 @@ Resources:
       UserPoolName: '${self:service}-user-pool-${opt:stage, self:provider.stage}'
       UsernameAttributes:
         - email
+      AdminCreateUserConfig:
+        AllowAdminCreateUserOnly: True
       Policies:
         PasswordPolicy:
           MinimumLength: 8
@@ -18,6 +20,19 @@ Resources:
     Properties:
       ClientName: '${self:service}-user-pool-client-${opt:stage, self:provider.stage}'
       GenerateSecret: False
+      PreventUserExistenceErrors: ENABLED
+      CallbackURLs:
+        - 'http://localhost:4000'
+      SupportedIdentityProviders:
+        - COGNITO
+      AllowedOAuthFlowsUserPoolClient: True
+      AllowedOAuthFlows:
+        - code
+      AllowedOAuthScopes:
+        - phone
+        - email
+        - openid
+        - profile
       UserPoolId:
         Ref: CognitoUserPool
   CognitoAdminUserGroup:
