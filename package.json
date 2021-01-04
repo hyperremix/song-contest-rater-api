@@ -24,7 +24,9 @@
     "start": "sls offline start --stage=local",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "sls deploy",
+    "deploy:prod": "sls deploy --stage prod"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.64",
