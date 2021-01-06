@@ -6,8 +6,6 @@ Resources:
       UserPoolName: '${self:service}-user-pool-${opt:stage, self:provider.stage}'
       UsernameAttributes:
         - email
-      AdminCreateUserConfig:
-        AllowAdminCreateUserOnly: True
       Policies:
         PasswordPolicy:
           MinimumLength: 8
