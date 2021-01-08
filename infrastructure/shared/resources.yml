@@ -6,6 +6,8 @@ Resources:
       UserPoolName: '${self:service}-user-pool-${opt:stage, self:provider.stage}'
       UsernameAttributes:
         - email
+      AutoVerifiedAttributes:
+        - email
       Policies:
         PasswordPolicy:
           MinimumLength: 8
