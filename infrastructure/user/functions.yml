@@ -5,10 +5,6 @@ createUser:
         path: users
         method: post
         cors: true
-        authorizer:
-          type: COGNITO_USER_POOLS
-          authorizerId:
-            Ref: ApiGatewayAuthorizer
 listUsers:
   handler: src/user/user-gateway.listUsers
   events:
