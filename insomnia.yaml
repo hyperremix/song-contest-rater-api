@@ -1,8 +1,164 @@
 _type: export
 __export_format: 4
-__export_date: 2020-12-16T21:48:30.192Z
+__export_date: 2021-01-12T18:19:09.619Z
 __export_source: insomnia.desktop.app:v2020.5.2
 resources:
+  - _id: req_73a69ba33c9a43658bb0bcf6980f8a51
+    parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
+    modified: 1610474792083
+    created: 1610469474524
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/3ba47e6c-6b6f-51be-a811-52965267711e"
+    name: user
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607266957404.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_a8dd3923007d4bd19980c59b0bdc07f4
+    parentId: wrk_6102c2525c8d4c13b2c9830b14ba78d1
+    modified: 1610280566487
+    created: 1610280517763
+    name: users
+    description: ""
+    environment:
+      endpoint: users
+    environmentPropertyOrder:
+      "&":
+        - endpoint
+    metaSortKey: -1610280517763
+    _type: request_group
+  - _id: wrk_6102c2525c8d4c13b2c9830b14ba78d1
+    parentId: null
+    modified: 1607264288611
+    created: 1607264288611
+    name: song-contest-rater
+    description: ""
+    scope: null
+    _type: workspace
+  - _id: req_5cc0fd462dcd4fb087beab4b478c0429
+    parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
+    modified: 1610475391757
+    created: 1610469438186
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/3ba47e6c-6b6f-51be-a811-52965267711e"
+    name: user
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"firstname": "updated John",
+        	"lastname": "updated Doe",
+        	"email": "updated.john.doe@songcontestrater.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b8736c00332046d28d64eb063e80c0d6
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607266957354.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b9a44cd3c6cd4e408b5befe1486098ed
+    parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
+    modified: 1610474721526
+    created: 1610281115805
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/3ba47e6c-6b6f-51be-a811-52965267711e"
+    name: user
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607266957304.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bdbf235d82734b89bd505bf1e48daace
+    parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
+    modified: 1610281120276
+    created: 1610281103767
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}"
+    name: all users
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607266957279.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f2d1db5478a141f48a63663cc7791135
+    parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
+    modified: 1610475379766
+    created: 1610280546569
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}"
+    name: user
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"firstname": "John",
+        	"lastname": "Doe",
+        	"email": "john.doe@songcontestrater.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_8d83ae9b985c45aa997f4a02f25e77e1
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607266957254.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_32cb96288bbe4617a0269e7de237c35f
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
     modified: 1607289514852
@@ -39,14 +195,6 @@ resources:
         - endpoint
     metaSortKey: -1607267643201
     _type: request_group
-  - _id: wrk_6102c2525c8d4c13b2c9830b14ba78d1
-    parentId: null
-    modified: 1607264288611
-    created: 1607264288611
-    name: song-contest-rater
-    description: ""
-    scope: null
-    _type: workspace
   - _id: req_7e90a535dc5840fd9429f44796b48a48
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
     modified: 1607848029116
@@ -159,9 +307,9 @@ resources:
     _type: request
   - _id: req_0ab3dd43e809455f9b50885ad2834f30
     parentId: fld_9bc15434b88a478bb4892db6cba8d8a2
-    modified: 1608142422963
+    modified: 1608882887198
     created: 1608139127742
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/1c4cf144-dd91-4fd0-9882-fc8db8b8b56e"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/0f6b1f90-679c-4f2c-a2b3-0290efa0435a"
     name: competition
     description: ""
     method: DELETE
@@ -195,9 +343,9 @@ resources:
     _type: request_group
   - _id: req_360ed7d4bffe472d9bcebd137eb483d8
     parentId: fld_9bc15434b88a478bb4892db6cba8d8a2
-    modified: 1608142412572
+    modified: 1608882795378
     created: 1608139127739
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/1c4cf144-dd91-4fd0-9882-fc8db8b8b56e"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/0f6b1f90-679c-4f2c-a2b3-0290efa0435a"
     name: competition
     description: ""
     method: PUT
@@ -231,9 +379,9 @@ resources:
     _type: request
   - _id: req_41d517941fca4dc4b6084189e696207d
     parentId: fld_9bc15434b88a478bb4892db6cba8d8a2
-    modified: 1608142402160
+    modified: 1608882789161
     created: 1608139127737
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/1c4cf144-dd91-4fd0-9882-fc8db8b8b56e"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/0f6b1f90-679c-4f2c-a2b3-0290efa0435a"
     name: competiiton
     description: ""
     method: GET
@@ -277,7 +425,7 @@ resources:
     _type: request
   - _id: req_cd53bb32ca3e431d9e83ee8c7bc17907
     parentId: fld_9bc15434b88a478bb4892db6cba8d8a2
-    modified: 1608140865712
+    modified: 1608996529813
     created: 1608139127732
     url: "{{ _.baseUrl }}/{{ _.endpoint }}"
     name: competition
@@ -287,7 +435,7 @@ resources:
       mimeType: application/json
       text: >-
         {
-          "description": "Final",
+          "description": "Second Chance",
           "cityName": "Stockholm",
           "countryName": "Sweden",
           "startTime": "{% now 'iso-8601', '' %}",
@@ -311,17 +459,61 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_d81d3c57c29446ca8daa3fddf269fe57
+    parentId: wrk_6102c2525c8d4c13b2c9830b14ba78d1
+    modified: 1608882071533
+    created: 1608881924929
+    url: https://{{ _.appName }}-sso-{{ _.stage
+      }}.auth.eu-central-1.amazoncognito.com/oauth2/authorize?response_type=code&client_id=10f2a9mlcpljghbm16fe6k79oj&redirect_uri=http://localhost:3000&state=loggedIn&scope=openid+profile+aws.cognito.signin.user.admin
+    name: authorization
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1607266247686.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_031152dd0aaf4f7c8442593a81f9612c
     parentId: wrk_6102c2525c8d4c13b2c9830b14ba78d1
-    modified: 1607267605332
+    modified: 1609955568585
     created: 1607264852222
     url: "{{ _.loginEndpoint }}"
     name: token
     description: ""
     method: POST
-    body: {}
+    body:
+      mimeType: application/x-www-form-urlencoded
+      params:
+        - name: grant_type
+          value: authorization_code
+          description: ""
+          id: pair_e967fbbc7b3c4bf7901ad6daf906a796
+        - name: client_id
+          value: "{{ _.clientId }}"
+          description: ""
+          id: pair_889db5bc3b9e4c1e8f94d08062c5bff9
+          disabled: false
+        - name: code
+          value: 6fec62fc-524e-48ff-8ef8-a10a98317834
+          description: ""
+          id: pair_e8c44395457b49f09a5fc7d64ae3499a
+        - name: redirect_uri
+          value: http://localhost:3000
+          description: ""
+          id: pair_723ff7b91628442b9ec500f6654b67f0
     parameters: []
-    headers: []
+    headers:
+      - name: Content-Type
+        value: application/x-www-form-urlencoded
+        id: pair_20ad8f503ddc45e493146db7cd10bf23
     authentication: {}
     metaSortKey: -1607264852222
     isPrivate: false
@@ -348,10 +540,34 @@ resources:
     _type: environment
   - _id: jar_53ef0098572ea5d53aaa9b15d41e4e59c4a44cfc
     parentId: wrk_6102c2525c8d4c13b2c9830b14ba78d1
-    modified: 1607268614207
+    modified: 1609955592556
     created: 1607264288643
     name: Default Jar
-    cookies: []
+    cookies:
+      - key: XSRF-TOKEN
+        value: e189ef71-0c94-4a22-ba8c-a73fc5c6d217
+        domain: song-contest-rater-sso-dev.auth.eu-central-1.amazoncognito.com
+        path: /
+        secure: true
+        httpOnly: true
+        extensions:
+          - SameSite=Lax
+        hostOnly: true
+        creation: 2020-12-25T07:32:50.012Z
+        lastAccessed: 2020-12-25T07:32:50.012Z
+        id: "4477164941431768"
+      - key: XSRF-TOKEN
+        value: 54f2564b-5343-476f-9d1c-e4f90dba29d7
+        domain: songcontestrater.auth.eu-central-1.amazoncognito.com
+        path: /
+        secure: true
+        httpOnly: true
+        extensions:
+          - SameSite=Lax
+        hostOnly: true
+        creation: 2021-01-06T17:53:12.555Z
+        lastAccessed: 2021-01-06T17:53:12.555Z
+        id: "37072107184994274"
     _type: cookie_jar
   - _id: spc_70ed9db5cfd24668b0588d111191d26a
     parentId: wrk_6102c2525c8d4c13b2c9830b14ba78d1

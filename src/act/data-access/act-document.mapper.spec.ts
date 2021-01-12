@@ -46,7 +46,7 @@ describe('ActDocumentMapper', () => {
 
     it('then artistName is set', () => {
       // act
-      const result = actDocumentMapper.mapForwards(defaultActDocument);
+      const result = actDocumentMapper.mapBackwards(defaultActDocument);
 
       // assert
       expect(result.artistName).toBe(defaultActDocument.artistName);
@@ -54,7 +54,7 @@ describe('ActDocumentMapper', () => {
 
     it('then songName is set', () => {
       // act
-      const result = actDocumentMapper.mapForwards(defaultActDocument);
+      const result = actDocumentMapper.mapBackwards(defaultActDocument);
 
       // assert
       expect(result.songName).toBe(defaultActDocument.songName);

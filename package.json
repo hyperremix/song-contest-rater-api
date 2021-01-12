@@ -65,7 +65,8 @@
     "http-errors": "^1.8.0",
     "injection-js": "^2.4.0",
     "middy": "^0.36.0",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "uuid-by-string": "^3.0.2"
   },
   "jest": {
     "moduleFileExtensions": [

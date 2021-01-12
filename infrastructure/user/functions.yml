@@ -1,0 +1,55 @@
+createUser:
+  handler: src/user/user-gateway.createUser
+  events:
+    - http:
+        path: users
+        method: post
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+listUsers:
+  handler: src/user/user-gateway.listUsers
+  events:
+    - http:
+        path: users
+        method: get
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+getUser:
+  handler: src/user/user-gateway.getUser
+  events:
+    - http:
+        path: users/{id}
+        method: get
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+updateUser:
+  handler: src/user/user-gateway.updateUser
+  events:
+    - http:
+        path: users/{id}
+        method: put
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+deleteUser:
+  handler: src/user/user-gateway.deleteUser
+  events:
+    - http:
+        path: users/{id}
+        method: delete
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer

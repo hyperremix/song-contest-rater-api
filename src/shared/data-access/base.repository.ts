@@ -20,7 +20,7 @@ export abstract class BaseRepository<T, U> {
 
   public abstract get(id: string): Promise<T>;
 
-  public async innerGet(query: U): Promise<T> {
+  protected async innerGet(query: U): Promise<T> {
     try {
       const result = await this.databaseClient.get(query);
       return this.mapper.mapBackwards(result);
@@ -37,7 +37,7 @@ export abstract class BaseRepository<T, U> {
 
   public abstract delete(id: string): Promise<T>;
 
-  public async innerDelete(query: U): Promise<T> {
+  protected async innerDelete(query: U): Promise<T> {
     const result = await this.databaseClient.delete(query);
     return this.mapper.mapBackwards(result);
   }
