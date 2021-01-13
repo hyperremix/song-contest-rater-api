@@ -4,14 +4,14 @@ import 'reflect-metadata';
 import { createDataMapper } from 'src/shared/data-access/database-client.factory';
 import { DatabaseClient } from 'src/shared/data-access/database.client';
 import { ActController } from './api/act.controller';
-import { ActDocumentMapper, ACT_DOCUMENT_MAPPER } from './data-access/act-document.mapper';
+import { ActDocumentMapper } from './data-access/act-document.mapper';
 import { ActRepository } from './data-access/act.repository';
 
 export function getActController(): ActController {
   return ReflectiveInjector.resolveAndCreate([
     { provide: DataMapper, useFactory: createDataMapper },
     DatabaseClient,
-    { provide: ACT_DOCUMENT_MAPPER, useClass: ActDocumentMapper },
+    ActDocumentMapper,
     ActRepository,
     ActController,
   ]).get(ActController);

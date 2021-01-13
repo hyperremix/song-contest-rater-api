@@ -1,17 +1,13 @@
 import { Competition } from '@hyperremix/song-contest-rater-model';
-import { Inject, Injectable } from 'injection-js';
+import { Injectable } from 'injection-js';
 import { BaseRepository } from '../../shared/data-access/base.repository';
 import { DatabaseClient } from '../../shared/data-access/database.client';
-import { DocumentMapper } from '../../shared/data-access/document.mapper';
 import { CompetitionDocument } from './competition-document';
-import { COMPETITION_DOCUMENT_MAPPER } from './competition-document.mapper';
+import { CompetitionDocumentMapper } from './competition-document.mapper';
 
 @Injectable()
 export class CompetitionRepository extends BaseRepository<Competition, CompetitionDocument> {
-  constructor(
-    databaseClient: DatabaseClient,
-    @Inject(COMPETITION_DOCUMENT_MAPPER) mapper: DocumentMapper<Competition, CompetitionDocument>
-  ) {
+  constructor(databaseClient: DatabaseClient, mapper: CompetitionDocumentMapper) {
     super(databaseClient, mapper);
   }
 

@@ -1,11 +1,7 @@
 import { Competition } from '@hyperremix/song-contest-rater-model';
-import { Injectable, InjectionToken } from 'injection-js';
+import { Injectable } from 'injection-js';
 import { DocumentMapper } from 'src/shared/data-access/document.mapper';
 import { CompetitionDocument } from './competition-document';
-
-export const COMPETITION_DOCUMENT_MAPPER: InjectionToken<
-  DocumentMapper<Competition, CompetitionDocument>
-> = new InjectionToken('CompetitionDocumentMapperToken');
 
 @Injectable()
 export class CompetitionDocumentMapper implements DocumentMapper<Competition, CompetitionDocument> {
