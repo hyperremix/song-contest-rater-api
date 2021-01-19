@@ -63,3 +63,28 @@ Resources:
       ResponseType: DEFAULT_4XX
       RestApiId:
         Ref: 'ApiGatewayRestApi'
+  ImagesBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ${self:provider.environment.SONG_CONTEST_RATER_IMAGES_BUCKET}
+      AccessControl: Private
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders: ['*']
+            AllowedMethods: ['PUT']
+            AllowedOrigins: ['*']
+  ImagesBucketPermissions:
+    Type: AWS::S3::BucketPolicy
+    DependsOn: ImagesBucket
+    Properties:
+      Bucket: ${self:provider.environment.SONG_CONTEST_RATER_IMAGES_BUCKET}
+      PolicyDocument:
+        Statement:
+          - Principal: '*'
+            Action:
+              - s3:PutObject
+              - s3:PutObjectAcl
+              - s3:GetObject
+            Effect: Allow
+            Sid: 'AddPerm'
+            Resource: arn:aws:s3:::${self:provider.environment.SONG_CONTEST_RATER_IMAGES_BUCKET}/*

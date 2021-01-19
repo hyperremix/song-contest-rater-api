@@ -10,6 +10,8 @@ export class UserDocument {
   lastname: string;
   @attribute()
   email: string;
+  @attribute()
+  avatarUrl: string;
 }
 
 export const defaultUserDocument: UserDocument = {
@@ -17,4 +19,5 @@ export const defaultUserDocument: UserDocument = {
   firstname: 'John',
   lastname: 'Doe',
   email: 'john.doe@songcontestrater.com',
+  avatarUrl: 'songcontestrater.com/logo192.png',
 };

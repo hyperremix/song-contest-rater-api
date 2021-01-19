@@ -38,6 +38,37 @@ updateUser:
           type: COGNITO_USER_POOLS
           authorizerId:
             Ref: ApiGatewayAuthorizer
+initiateAvatarUpload:
+  handler: src/user/user-gateway.initiateAvatarUpload
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+      Resource: arn:aws:s3:::${self:provider.environment.SONG_CONTEST_RATER_IMAGES_BUCKET}/*
+  events:
+    - http:
+        path: users/{id}/avatar
+        method: post
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+processUploadedAvatar:
+  handler: src/user/user-gateway.processUploadedAvatar
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+        - s3:HeadObject
+      Resource: arn:aws:s3:::${self:provider.environment.SONG_CONTEST_RATER_IMAGES_BUCKET}/*
+  events:
+    - s3:
+        bucket: ${self:provider.environment.SONG_CONTEST_RATER_IMAGES_BUCKET}
+        event: s3:ObjectCreated:*
+        rules:
+          - prefix: uploads/
+        existing: true
 deleteUser:
   handler: src/user/user-gateway.deleteUser
   events:

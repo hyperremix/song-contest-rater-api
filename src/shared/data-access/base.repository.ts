@@ -25,7 +25,7 @@ export abstract class BaseRepository<T, U> {
       const result = await this.databaseClient.get(query);
       return this.mapper.mapBackwards(result);
     } catch (error) {
-      throw new httpErrors.NotFound();
+      throw new httpErrors.NotFound(`No item found for query: ${JSON.stringify(query)}`);
     }
   }
 

@@ -11,6 +11,7 @@ provider:
     SONG_CONTEST_RATER_COMPETITIONS_TABLE: '${self:custom.tableNames.competitions}-${opt:stage, self:provider.stage}'
     SONG_CONTEST_RATER_USERS_TABLE: '${self:custom.tableNames.users}-${opt:stage, self:provider.stage}'
     SONG_CONTEST_RATER_DYNAMODB_ENDPOINT: ${self:custom.endpoints.dynamodb}
+    SONG_CONTEST_RATER_IMAGES_BUCKET: '${self:service}-${self:custom.bucketNames.images}-${opt:stage, self:provider.stage}'
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -39,6 +40,8 @@ custom:
     acts: 'acts'
     competitions: 'competitions'
     users: 'users'
+  bucketNames:
+    images: 'images'
   endpoints:
     dynamodb: 'http://localhost:8000'
 

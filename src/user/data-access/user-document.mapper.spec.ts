@@ -10,6 +10,14 @@ describe('UserDocumentMapper', () => {
   });
 
   describe('when mapping forwards', () => {
+    it('then id is set', () => {
+      // act
+      const result = userDocumentMapper.mapForwards(defaultUser);
+
+      // assert
+      expect(result.id).toBe(defaultUser.id);
+    });
+
     it('then email is set', () => {
       // act
       const result = userDocumentMapper.mapForwards(defaultUser);
@@ -33,9 +41,25 @@ describe('UserDocumentMapper', () => {
       // assert
       expect(result.lastname).toBe(defaultUser.lastname);
     });
+
+    it('then avatarUrl is set', () => {
+      // act
+      const result = userDocumentMapper.mapForwards(defaultUser);
+
+      // assert
+      expect(result.avatarUrl).toBe(defaultUser.avatarUrl);
+    });
   });
 
   describe('when mapping backwards', () => {
+    it('then id is set', () => {
+      // act
+      const result = userDocumentMapper.mapBackwards(defaultUserDocument);
+
+      // assert
+      expect(result.id).toBe(defaultUserDocument.id);
+    });
+
     it('then email is set', () => {
       // act
       const result = userDocumentMapper.mapBackwards(defaultUserDocument);
@@ -58,6 +82,14 @@ describe('UserDocumentMapper', () => {
 
       // assert
       expect(result.lastname).toBe(defaultUserDocument.lastname);
+    });
+
+    it('then avatarUrl is set', () => {
+      // act
+      const result = userDocumentMapper.mapBackwards(defaultUserDocument);
+
+      // assert
+      expect(result.avatarUrl).toBe(defaultUserDocument.avatarUrl);
     });
   });
 });

@@ -11,6 +11,7 @@ export class UserDocumentMapper implements DocumentMapper<User, UserDocument> {
     userDocument.firstname = model.firstname;
     userDocument.lastname = model.lastname;
     userDocument.email = model.email;
+    userDocument.avatarUrl = model.avatarUrl;
     return userDocument;
   }
 
