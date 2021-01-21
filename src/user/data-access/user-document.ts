@@ -24,6 +24,6 @@ export const defaultUserDocument: UserDocument = {
   lastname: 'Doe',
   email: 'john.doe@songcontestrater.com',
   avatarUrl: 'songcontestrater.com/logo192.png',
-  gravatarUrl: 'https://s.gravatar.com/avatar/a38c89eba770032ba4c617ba97f3138e?s=80',
+  gravatarUrl: 'https://s.gravatar.com/avatar/a38c89eba770032ba4c617ba97f3138e',
   useGravatar: false,
 };

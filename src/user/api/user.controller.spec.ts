@@ -1,6 +1,7 @@
 import { defaultUser } from '@hyperremix/song-contest-rater-model';
 import { Builder } from 'builder-pattern';
 import createHttpError from 'http-errors';
+import md5 from 'md5';
 import 'reflect-metadata';
 import getUuidByString from 'uuid-by-string';
 import { UserController } from './user.controller';
@@ -34,7 +35,9 @@ describe('UserController', () => {
   describe('when creating', () => {
     it('then the user is inserted into the repository', async () => {
       // arrange
-      const expectedUser = { ...defaultUser, id: getUuidByString(defaultUser.email) };
+      const expectedUser = Builder(defaultUser)
+        .id(getUuidByString(defaultUser.email))
+        .gravatarUrl(`https://s.gravatar.com/avatar/${md5(defaultUser.email)}`);
 
       // act
       await userController.create(defaultUser);

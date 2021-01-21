@@ -49,6 +49,22 @@ describe('UserDocumentMapper', () => {
       // assert
       expect(result.avatarUrl).toBe(defaultUser.avatarUrl);
     });
+
+    it('then gravatarUrl is set', () => {
+      // act
+      const result = userDocumentMapper.mapForwards(defaultUser);
+
+      // assert
+      expect(result.gravatarUrl).toBe(defaultUser.gravatarUrl);
+    });
+
+    it('then useGvatar is set', () => {
+      // act
+      const result = userDocumentMapper.mapForwards(defaultUser);
+
+      // assert
+      expect(result.useGravatar).toBe(defaultUser.useGravatar);
+    });
   });
 
   describe('when mapping backwards', () => {
@@ -90,6 +106,22 @@ describe('UserDocumentMapper', () => {
 
       // assert
       expect(result.avatarUrl).toBe(defaultUserDocument.avatarUrl);
+    });
+
+    it('then gravatarUrl is set', () => {
+      // act
+      const result = userDocumentMapper.mapBackwards(defaultUserDocument);
+
+      // assert
+      expect(result.gravatarUrl).toBe(defaultUserDocument.gravatarUrl);
+    });
+
+    it('then useGvatar is set', () => {
+      // act
+      const result = userDocumentMapper.mapBackwards(defaultUserDocument);
+
+      // assert
+      expect(result.useGravatar).toBe(defaultUserDocument.useGravatar);
     });
   });
 });
