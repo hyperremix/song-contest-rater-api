@@ -1,6 +1,7 @@
 import { InitiateAvatarUploadResponse, User } from '@hyperremix/song-contest-rater-model';
 import createHttpError from 'http-errors';
 import { Injectable } from 'injection-js';
+import md5 from 'md5';
 import getUuidByString from 'uuid-by-string';
 import { S3Client } from '../data-access/s3.client';
 import { UserRepository } from '../data-access/user.repository';
@@ -12,6 +13,7 @@ export class UserController {
 
   public async create(user: User): Promise<User> {
     user.id = getUuidByString(user.email);
+    user.gravatarUrl = `https://s.gravatar.com/avatar/${md5(user.email)}`;
     return await this.userRepository.insert(user);
   }
 
