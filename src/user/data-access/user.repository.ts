@@ -26,4 +26,8 @@ export class UserRepository extends BaseRepository<User, UserDocument> {
     query.id = id;
     return await this.innerDelete(query);
   }
+
+  public async query(ids: string[]): Promise<User[]> {
+    return this.innerQuery(UserDocument, ids);
+  }
 }

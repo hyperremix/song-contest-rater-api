@@ -17,6 +17,7 @@ describe('ActController', () => {
       get: jest.fn(() => Promise.resolve(defaultAct)),
       update: jest.fn(() => Promise.resolve(defaultAct)),
       delete: jest.fn(() => Promise.resolve(defaultAct)),
+      query: jest.fn(() => Promise.resolve([defaultAct])),
     };
 
     actController = new ActController(actRepository);
@@ -85,6 +86,16 @@ describe('ActController', () => {
 
       // arrange
       expect(result).toEqual(defaultAct);
+    });
+  });
+
+  describe('when querying', () => {
+    it('then acts are returned from the repository', async () => {
+      // act
+      const result = await actController.query([defaultAct.id]);
+
+      // arrange
+      expect(result).toEqual([defaultAct]);
     });
   });
 });

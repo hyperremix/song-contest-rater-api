@@ -25,4 +25,8 @@ export class ActController {
   public async delete(id: string): Promise<Act> {
     return await this.actRepository.delete(id);
   }
+
+  public async query(ids: string[]): Promise<Act[]> {
+    return await this.actRepository.query(ids);
+  }
 }

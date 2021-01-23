@@ -11,8 +11,10 @@ export const createAct = middify(async ({ body }) => {
   return createResponse(201, result);
 }).use([adminAuthorizer(), validator({ inputSchema: createInputSchema(actSchema) })]);
 
-export const listActs = middify(async () => {
-  const result = await getActController().list();
+export const listActs = middify(async ({ multiValueQueryStringParameters }) => {
+  const result = multiValueQueryStringParameters?.ids
+    ? await getActController().query(multiValueQueryStringParameters.ids)
+    : await getActController().list();
   return createResponse(200, result);
 });
 

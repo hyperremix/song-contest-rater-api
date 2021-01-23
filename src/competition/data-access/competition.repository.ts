@@ -26,4 +26,8 @@ export class CompetitionRepository extends BaseRepository<Competition, Competiti
     query.id = id;
     return await this.innerDelete(query);
   }
+
+  public async query(ids: string[]): Promise<Competition[]> {
+    return await this.innerQuery(CompetitionDocument, ids);
+  }
 }

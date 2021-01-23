@@ -26,4 +26,8 @@ export class ActRepository extends BaseRepository<Act, ActDocument> {
     query.id = id;
     return await this.innerDelete(query);
   }
+
+  public async query(ids: string[]): Promise<Act[]> {
+    return await this.innerQuery(ActDocument, ids);
+  }
 }

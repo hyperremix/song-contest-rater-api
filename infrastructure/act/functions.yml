@@ -16,6 +16,12 @@ listActs:
         path: acts
         method: get
         cors: true
+        request:
+          template:
+            application/json: >
+              {
+                "ids" : "$input.params('ids')"
+              }
 getAct:
   handler: src/act/act-gateway.getAct
   events:

@@ -138,4 +138,29 @@ describe('ActRepository', () => {
       expect(result).toBe(defaultAct);
     });
   });
+
+  describe('when querying', () => {
+    it('then act documents are mapped', async () => {
+      // act
+      await actRepository.query([defaultAct.id]);
+
+      // assert
+      expect(mapper.mapBackwards).toHaveBeenCalledWith(defaultActDocument);
+    });
+
+    it('then a list of acts is returned', async () => {
+      // arrange
+      const extraActDocument = Builder(defaultActDocument).id('otherid').build();
+      const extraAct = Builder(defaultAct).id('otherid').build();
+
+      databaseClient.scan.mockReturnValue([defaultActDocument, extraActDocument]);
+      mapper.mapBackwards.mockReturnValueOnce(defaultAct).mockReturnValueOnce(extraAct);
+
+      // act
+      const result = await actRepository.query([defaultAct.id, extraAct.id]);
+
+      // assert
+      expect(result).toEqual([defaultAct, extraAct]);
+    });
+  });
 });

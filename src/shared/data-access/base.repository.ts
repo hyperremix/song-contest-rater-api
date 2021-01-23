@@ -41,4 +41,13 @@ export abstract class BaseRepository<T, U> {
     const result = await this.databaseClient.delete(query);
     return this.mapper.mapBackwards(result);
   }
+
+  public abstract query(ids: string[]): Promise<T[]>;
+
+  protected async innerQuery(type: { new (): U }, ids: string[]): Promise<T[]> {
+    const acts = await this.databaseClient.scan(type);
+    return acts
+      .filter((act) => ids.includes(act['id']))
+      .map((document: U) => this.mapper.mapBackwards(document));
+  }
 }
