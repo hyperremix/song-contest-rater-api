@@ -1,0 +1,61 @@
+createRating:
+  handler: src/rating/rating-gateway.createRating
+  events:
+    - http:
+        path: ratings
+        method: post
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+listRatings:
+  handler: src/rating/rating-gateway.listRatings
+  events:
+    - http:
+        path: ratings
+        method: get
+        cors: true
+        request:
+          template:
+            application/json: >
+              {
+                "ids" : "$input.params('ids')"
+              }
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+getRating:
+  handler: src/rating/rating-gateway.getRating
+  events:
+    - http:
+        path: ratings/{id}
+        method: get
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+updateRating:
+  handler: src/rating/rating-gateway.updateRating
+  events:
+    - http:
+        path: ratings/{id}
+        method: put
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+deleteRating:
+  handler: src/rating/rating-gateway.deleteRating
+  events:
+    - http:
+        path: ratings/{id}
+        method: delete
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer

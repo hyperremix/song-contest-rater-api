@@ -1,23 +1,30 @@
 _type: export
 __export_format: 4
-__export_date: 2021-01-12T18:19:09.619Z
+__export_date: 2021-01-24T11:59:34.318Z
 __export_source: insomnia.desktop.app:v2020.5.2
 resources:
-  - _id: req_73a69ba33c9a43658bb0bcf6980f8a51
+  - _id: req_a5cc1d15ac9b420e81f381e1dc8028d2
     parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
-    modified: 1610474792083
-    created: 1610469474524
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/3ba47e6c-6b6f-51be-a811-52965267711e"
-    name: user
+    modified: 1610879580812
+    created: 1610878119533
+    url: "{{ _.baseUrl }}/{{ _.endpoint
+      }}/a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83/avatar"
+    name: avatar
     description: ""
-    method: DELETE
-    body: {}
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"contentType": "image/jpeg"
+        }
     parameters: []
-    headers: []
-    authentication:
-      type: bearer
-      token: "{{ _.token }}"
-    metaSortKey: -1607266957404.75
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_726980f2d3b442b2a1c2ad4818ad9291
+    authentication: {}
+    metaSortKey: -1610878119533
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -47,21 +54,48 @@ resources:
     description: ""
     scope: null
     _type: workspace
+  - _id: req_73a69ba33c9a43658bb0bcf6980f8a51
+    parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
+    modified: 1610479874257
+    created: 1610469474524
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83"
+    name: user
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607266957404.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_5cc0fd462dcd4fb087beab4b478c0429
     parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
-    modified: 1610475391757
+    modified: 1611231616493
     created: 1610469438186
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/3ba47e6c-6b6f-51be-a811-52965267711e"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83"
     name: user
     description: ""
     method: PUT
     body:
       mimeType: application/json
-      text: |-
+      text: >-
         {
-        	"firstname": "updated John",
-        	"lastname": "updated Doe",
-        	"email": "updated.john.doe@songcontestrater.com"
+        	"id": "a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c82",
+        	"firstname": "Fredrik",
+        	"lastname": "Pettersson",
+        	"email": "fredrik.pettersson.89@gmail.com",
+          "avatarUrl": "https://song-contest-rater-images-dev.s3.eu-central-1.amazonaws.com/uploads/a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83.jpg",
+        	"gravatarUrl": "https://s.gravatar.com/avatar/a38c89eba770032ba4c617ba97f3138e",
+        	"useGravatar": true
         }
     parameters: []
     headers:
@@ -82,9 +116,9 @@ resources:
     _type: request
   - _id: req_b9a44cd3c6cd4e408b5befe1486098ed
     parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
-    modified: 1610474721526
+    modified: 1610898481847
     created: 1610281115805
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/3ba47e6c-6b6f-51be-a811-52965267711e"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83"
     name: user
     description: ""
     method: GET
@@ -94,7 +128,7 @@ resources:
     authentication:
       type: bearer
       token: "{{ _.token }}"
-    metaSortKey: -1607266957304.75
+    metaSortKey: -1607266957292.25
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -128,7 +162,7 @@ resources:
     _type: request
   - _id: req_f2d1db5478a141f48a63663cc7791135
     parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
-    modified: 1610475379766
+    modified: 1610572490349
     created: 1610280546569
     url: "{{ _.baseUrl }}/{{ _.endpoint }}"
     name: user
@@ -138,9 +172,9 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"firstname": "John",
-        	"lastname": "Doe",
-        	"email": "john.doe@songcontestrater.com"
+        	"firstname": "Fredrik",
+        	"lastname": "Pettersson",
+        	"email": "fredrik.pettersson.89@gmail.com"
         }
     parameters: []
     headers:
@@ -161,9 +195,9 @@ resources:
     _type: request
   - _id: req_32cb96288bbe4617a0269e7de237c35f
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
-    modified: 1607289514852
+    modified: 1610552089313
     created: 1607289441134
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/47a1e5b5-b79d-4ef5-992c-c9927cb8b25d"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/bd299215-81c7-42e7-bc97-6461619a2eab"
     name: act
     description: ""
     method: DELETE
@@ -197,9 +231,9 @@ resources:
     _type: request_group
   - _id: req_7e90a535dc5840fd9429f44796b48a48
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
-    modified: 1607848029116
+    modified: 1610552083912
     created: 1607287846720
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/12637a4a-fda7-4dbd-812b-87623f967c92"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/bd299215-81c7-42e7-bc97-6461619a2eab"
     name: act
     description: ""
     method: PUT
@@ -229,9 +263,9 @@ resources:
     _type: request
   - _id: req_d6d470a6743d4025b8d09af39c432986
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
-    modified: 1607848015891
+    modified: 1610552077735
     created: 1607275627410
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/12637a4a-fda7-4dbd-812b-87623f967c92"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/bd299215-81c7-42e7-bc97-6461619a2eab"
     name: act
     description: ""
     method: GET
@@ -273,6 +307,29 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_3ffaf9b7bc414ca0b19d1370f784f0eb
+    parentId: fld_065a85378b5e40feb9342fe7b899bb52
+    modified: 1611409161678
+    created: 1611405489561
+    url: "{{ _.baseUrl }}/{{ _.endpoint
+      }}?ids=e1522d57-ae02-434a-8ad5-987131b4961c&ids=991e68a5-4d68-4afc-b300-0\
+      1182fd5ea53"
+    name: query acts
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1607267740797
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_9b675b42250e4104ad1e546e6fdcedb2
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
     modified: 1607962741762
@@ -305,11 +362,186 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_4a4cdfe5eb804b809147f6158b657a1f
+    parentId: fld_4436c62203324d09b582aa75f90acfe5
+    modified: 1611486340474
+    created: 1611486295457
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/bd299215-81c7-42e7-bc97-6461619a2eab"
+    name: rating
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607289441134
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_4436c62203324d09b582aa75f90acfe5
+    parentId: wrk_6102c2525c8d4c13b2c9830b14ba78d1
+    modified: 1611486384852
+    created: 1611486295409
+    name: ratings
+    description: ""
+    environment:
+      endpoint: ratings
+    environmentPropertyOrder:
+      "&":
+        - endpoint
+    metaSortKey: -1607267643176
+    _type: request_group
+  - _id: req_e9f023362b7640f1b717f2c474fbf580
+    parentId: fld_4436c62203324d09b582aa75f90acfe5
+    modified: 1611486335905
+    created: 1611486295454
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/bd299215-81c7-42e7-bc97-6461619a2eab"
+    name: rating
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"artistName": "updated artistName",
+        	"songName": "updated songName"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b8736c00332046d28d64eb063e80c0d6
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607287846721
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3ee03d01838f427c953dcafe9ded53d3
+    parentId: fld_4436c62203324d09b582aa75f90acfe5
+    modified: 1611486330527
+    created: 1611486295451
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/bd299215-81c7-42e7-bc97-6461619a2eab"
+    name: rating
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607275627410
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_60b5bf91657a4b4288b609fc0422cc41
+    parentId: fld_4436c62203324d09b582aa75f90acfe5
+    modified: 1611486325174
+    created: 1611486295444
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}"
+    name: all ratings
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607267814771
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_51df321e2a3e40a5bfb29c34f60ad9c5
+    parentId: fld_4436c62203324d09b582aa75f90acfe5
+    modified: 1611486318963
+    created: 1611486295461
+    url: "{{ _.baseUrl }}/{{ _.endpoint
+      }}?ids=e1522d57-ae02-434a-8ad5-987131b4961c&ids=991e68a5-4d68-4afc-b300-0\
+      1182fd5ea53"
+    name: query ratings
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1607267740797
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cdad9e1008944ab4b43dceb60aec37e2
+    parentId: fld_4436c62203324d09b582aa75f90acfe5
+    modified: 1611488314318
+    created: 1611486295423
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}"
+    name: rating
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"userId": "a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83",
+        	"competitionId": "1208ceb9-1e17-479a-a025-4230cef5cd7a",
+        	"actId": "f93c5f03-6c33-4c98-ab4f-7de60fcb46fc",
+        	"song": 1,
+        	"singing": 2,
+        	"show": 3,
+        	"looks": 4,
+        	"clothes": 5
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_8d83ae9b985c45aa997f4a02f25e77e1
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1607267666823
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_0ab3dd43e809455f9b50885ad2834f30
     parentId: fld_9bc15434b88a478bb4892db6cba8d8a2
-    modified: 1608882887198
+    modified: 1610552116178
     created: 1608139127742
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/0f6b1f90-679c-4f2c-a2b3-0290efa0435a"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/3c88c6c5-2751-4e5e-8e20-a39b1c0c86a2"
     name: competition
     description: ""
     method: DELETE
@@ -343,9 +575,9 @@ resources:
     _type: request_group
   - _id: req_360ed7d4bffe472d9bcebd137eb483d8
     parentId: fld_9bc15434b88a478bb4892db6cba8d8a2
-    modified: 1608882795378
+    modified: 1610552110847
     created: 1608139127739
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/0f6b1f90-679c-4f2c-a2b3-0290efa0435a"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/3c88c6c5-2751-4e5e-8e20-a39b1c0c86a2"
     name: competition
     description: ""
     method: PUT
@@ -379,9 +611,9 @@ resources:
     _type: request
   - _id: req_41d517941fca4dc4b6084189e696207d
     parentId: fld_9bc15434b88a478bb4892db6cba8d8a2
-    modified: 1608882789161
+    modified: 1610552105245
     created: 1608139127737
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/0f6b1f90-679c-4f2c-a2b3-0290efa0435a"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/3c88c6c5-2751-4e5e-8e20-a39b1c0c86a2"
     name: competiiton
     description: ""
     method: GET
@@ -425,7 +657,7 @@ resources:
     _type: request
   - _id: req_cd53bb32ca3e431d9e83ee8c7bc17907
     parentId: fld_9bc15434b88a478bb4892db6cba8d8a2
-    modified: 1608996529813
+    modified: 1611488049562
     created: 1608139127732
     url: "{{ _.baseUrl }}/{{ _.endpoint }}"
     name: competition
@@ -440,7 +672,7 @@ resources:
           "countryName": "Sweden",
           "startTime": "{% now 'iso-8601', '' %}",
           "imageUrl": "https://www.ab-in-den-urlaub.de/magazin/wp-content/uploads/2020/03/1583501813_Blick-auf-die-Altstadt-Gamla-Stan.jpg",
-          "actIds": ["84ce3ed6-a479-4ba4-86e1-d053638fd8a1"]
+          "actIds": ["646f4e1f-3a09-42f0-8fe1-d6e8888c33d2"]
         }
     parameters: []
     headers:

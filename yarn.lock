@@ -1226,9 +1226,9 @@
     "@hapi/hoek" "8.x.x"
 
 "@hyperremix/song-contest-rater-model@^1.1.1":
-  version "1.2.4"
-  resolved "https://npm.pkg.github.com/download/@hyperremix/song-contest-rater-model/1.2.4/98b46a5065004c0051c8ad8efcb32fb38fb7b1eef5f56fd659241a4e33373839#cd905faef9f02b1ccf982fb1c652431f2ea24439"
-  integrity sha512-Rn5G6+uK+Ps7WZXqUxOhRmaaHoiVrVLUGaaSG9d70dB4YmxWjuKxmbyN2OzNhernGpjcxna2YLmOICWZRyr0UQ==
+  version "1.3.0"
+  resolved "https://npm.pkg.github.com/download/@hyperremix/song-contest-rater-model/1.3.0/d82ca795d9de2e937faf8ff3fa9ef7470ef896df8397520577d1a37c80d6e63b#7133878a11662ad8ed14d85b874653f0b3eec984"
+  integrity sha512-Bgx1Ond0OpJDvalTy7TbERSWFLsJThQhbz1hVRxriv77agQaOgLwPbsXoxEcaHFhtoejumcmowm9jl2LPfCjtA==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
@@ -10138,6 +10138,13 @@ serverless-dynamodb-local@^0.2.39:
     bluebird "^3.4.6"
     dynamodb-localhost "0.0.9"
     lodash "^4.17.0"
+
+serverless-iam-roles-per-function@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/serverless-iam-roles-per-function/-/serverless-iam-roles-per-function-3.1.0.tgz#3bd87011234641f4e4883b1a8aeecb8610ac71c5"
+  integrity sha512-/kNfT169FOOrYtkN6WV3fU9Nt0E2pku/1Vio1My82iKnbUQ9Bx35PSOvdRS32e7mLVwbdwZ5ecMKG1lpsuQLoA==
+  dependencies:
+    lodash "^4.17.20"
 
 serverless-offline@^6.8.0:
   version "6.8.0"
