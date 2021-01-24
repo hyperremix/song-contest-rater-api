@@ -65,6 +65,14 @@ describe('UserDocumentMapper', () => {
       // assert
       expect(result.useGravatar).toBe(defaultUser.useGravatar);
     });
+
+    it('then ratingIds is set', () => {
+      // act
+      const result = userDocumentMapper.mapForwards(defaultUser);
+
+      // assert
+      expect(result.ratingIds).toBe(defaultUser.ratingIds);
+    });
   });
 
   describe('when mapping backwards', () => {
@@ -122,6 +130,14 @@ describe('UserDocumentMapper', () => {
 
       // assert
       expect(result.useGravatar).toBe(defaultUserDocument.useGravatar);
+    });
+
+    it('then ratingIds is set', () => {
+      // act
+      const result = userDocumentMapper.mapBackwards(defaultUserDocument);
+
+      // assert
+      expect(result.ratingIds).toBe(defaultUserDocument.ratingIds);
     });
   });
 });

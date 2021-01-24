@@ -16,6 +16,8 @@ export class CompetitionDocument {
   imageUrl: string;
   @attribute()
   actIds: string[];
+  @attribute()
+  ratingIds: string[];
 }
 
 export const defaultCompetitionDocument: CompetitionDocument = {
@@ -26,4 +28,5 @@ export const defaultCompetitionDocument: CompetitionDocument = {
   startTime: new Date(),
   imageUrl: 'https://imageurl.example.com/img.jpg',
   actIds: ['84ce3ed6-a479-4ba4-86e1-d053638fd8a1'],
+  ratingIds: ['84ce3ed6-a479-4ba4-86e1-d053638fd8a1'],
 };

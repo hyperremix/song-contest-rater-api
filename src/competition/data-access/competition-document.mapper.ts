@@ -14,6 +14,7 @@ export class CompetitionDocumentMapper implements DocumentMapper<Competition, Co
     document.startTime = model.startTime;
     document.imageUrl = model.imageUrl;
     document.actIds = model.actIds;
+    document.ratingIds = model.ratingIds;
     return document;
   }
 

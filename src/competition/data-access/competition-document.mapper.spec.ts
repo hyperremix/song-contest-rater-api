@@ -65,6 +65,14 @@ describe('CompetitionDocumentMapper', () => {
       // assert
       expect(result.actIds).toBe(defaultCompetition.actIds);
     });
+
+    it('then ratingIds is set', () => {
+      // act
+      const result = competitionDocumentMapper.mapForwards(defaultCompetition);
+
+      // assert
+      expect(result.ratingIds).toBe(defaultCompetition.ratingIds);
+    });
   });
 
   describe('when mapping backwards', () => {
@@ -122,6 +130,14 @@ describe('CompetitionDocumentMapper', () => {
 
       // assert
       expect(result.actIds).toBe(defaultCompetitionDocument.actIds);
+    });
+
+    it('then ratingIds is set', () => {
+      // act
+      const result = competitionDocumentMapper.mapBackwards(defaultCompetitionDocument);
+
+      // assert
+      expect(result.ratingIds).toBe(defaultCompetitionDocument.ratingIds);
     });
   });
 });

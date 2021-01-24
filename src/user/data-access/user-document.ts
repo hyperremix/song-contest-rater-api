@@ -16,6 +16,8 @@ export class UserDocument {
   gravatarUrl: string;
   @attribute()
   useGravatar: boolean;
+  @attribute()
+  ratingIds: string[];
 }
 
 export const defaultUserDocument: UserDocument = {
@@ -26,4 +28,5 @@ export const defaultUserDocument: UserDocument = {
   avatarUrl: 'songcontestrater.com/logo192.png',
   gravatarUrl: 'https://s.gravatar.com/avatar/a38c89eba770032ba4c617ba97f3138e',
   useGravatar: false,
+  ratingIds: ['84ce3ed6-a479-4ba4-86e1-d053638fd8a1'],
 };

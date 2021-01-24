@@ -14,6 +14,7 @@ export class UserDocumentMapper implements DocumentMapper<User, UserDocument> {
     userDocument.avatarUrl = model.avatarUrl;
     userDocument.gravatarUrl = model.gravatarUrl;
     userDocument.useGravatar = model.useGravatar;
+    userDocument.ratingIds = model.ratingIds;
     return userDocument;
   }
 
