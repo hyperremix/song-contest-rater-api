@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-01-24T11:59:34.318Z
+__export_date: 2021-01-24T13:43:28.392Z
 __export_source: insomnia.desktop.app:v2020.5.2
 resources:
   - _id: req_a5cc1d15ac9b420e81f381e1dc8028d2
@@ -162,7 +162,7 @@ resources:
     _type: request
   - _id: req_f2d1db5478a141f48a63663cc7791135
     parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
-    modified: 1610572490349
+    modified: 1611493966323
     created: 1610280546569
     url: "{{ _.baseUrl }}/{{ _.endpoint }}"
     name: user
@@ -364,9 +364,9 @@ resources:
     _type: request
   - _id: req_4a4cdfe5eb804b809147f6158b657a1f
     parentId: fld_4436c62203324d09b582aa75f90acfe5
-    modified: 1611486340474
+    modified: 1611495506591
     created: 1611486295457
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/bd299215-81c7-42e7-bc97-6461619a2eab"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/83c71b33-3745-5d41-b77a-8fd06f8441b6"
     name: rating
     description: ""
     method: DELETE
@@ -400,9 +400,9 @@ resources:
     _type: request_group
   - _id: req_e9f023362b7640f1b717f2c474fbf580
     parentId: fld_4436c62203324d09b582aa75f90acfe5
-    modified: 1611486335905
+    modified: 1611495642571
     created: 1611486295454
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/bd299215-81c7-42e7-bc97-6461619a2eab"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/83c71b33-3745-5d41-b77a-8fd06f8441b6"
     name: rating
     description: ""
     method: PUT
@@ -410,8 +410,14 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"artistName": "updated artistName",
-        	"songName": "updated songName"
+        	"userId": "a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83",
+        	"competitionId": "1208ceb9-1e17-479a-a025-4230cef5cd7a",
+        	"actId": "f93c5f03-6c33-4c98-ab4f-7de60fcb46fc",
+        	"song": 1,
+        	"singing": 2,
+        	"show": 3,
+        	"looks": 4,
+        	"clothes": 5
         }
     parameters: []
     headers:
@@ -432,9 +438,9 @@ resources:
     _type: request
   - _id: req_3ee03d01838f427c953dcafe9ded53d3
     parentId: fld_4436c62203324d09b582aa75f90acfe5
-    modified: 1611486330527
+    modified: 1611494054826
     created: 1611486295451
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/bd299215-81c7-42e7-bc97-6461619a2eab"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/83c71b33-3745-5d41-b77a-8fd06f8441b6"
     name: rating
     description: ""
     method: GET
@@ -478,11 +484,9 @@ resources:
     _type: request
   - _id: req_51df321e2a3e40a5bfb29c34f60ad9c5
     parentId: fld_4436c62203324d09b582aa75f90acfe5
-    modified: 1611486318963
+    modified: 1611494065712
     created: 1611486295461
-    url: "{{ _.baseUrl }}/{{ _.endpoint
-      }}?ids=e1522d57-ae02-434a-8ad5-987131b4961c&ids=991e68a5-4d68-4afc-b300-0\
-      1182fd5ea53"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}?ids=83c71b33-3745-5d41-b77a-8fd06f8441b6"
     name: query ratings
     description: ""
     method: GET
@@ -501,7 +505,7 @@ resources:
     _type: request
   - _id: req_cdad9e1008944ab4b43dceb60aec37e2
     parentId: fld_4436c62203324d09b582aa75f90acfe5
-    modified: 1611488314318
+    modified: 1611495467953
     created: 1611486295423
     url: "{{ _.baseUrl }}/{{ _.endpoint }}"
     name: rating

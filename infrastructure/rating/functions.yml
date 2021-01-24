@@ -22,10 +22,6 @@ listRatings:
               {
                 "ids" : "$input.params('ids')"
               }
-        authorizer:
-          type: COGNITO_USER_POOLS
-          authorizerId:
-            Ref: ApiGatewayAuthorizer
 getRating:
   handler: src/rating/rating-gateway.getRating
   events:
@@ -33,10 +29,6 @@ getRating:
         path: ratings/{id}
         method: get
         cors: true
-        authorizer:
-          type: COGNITO_USER_POOLS
-          authorizerId:
-            Ref: ApiGatewayAuthorizer
 updateRating:
   handler: src/rating/rating-gateway.updateRating
   events:

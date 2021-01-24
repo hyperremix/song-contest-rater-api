@@ -3,12 +3,14 @@ import validator from '@middy/validator';
 import { createInputSchema } from 'src/shared/api/schema.factory';
 import { middify } from 'src/shared/api/third-party.middleware';
 import { createResponse } from '../shared/api/response.factory';
+import { ratingCreateAuthorizer } from './api/rating-create-authorizer.middleware';
+import { ratingUpdateAuthorizer } from './api/rating-update-authorizer.middleware';
 import { getRatingController } from './rating-context';
 
 export const createRating = middify(async ({ body }) => {
   const result = await getRatingController().create(body);
   return createResponse(201, result);
-}).use([validator({ inputSchema: createInputSchema(ratingSchema) })]);
+}).use([ratingCreateAuthorizer(), validator({ inputSchema: createInputSchema(ratingSchema) })]);
 
 export const listRatings = middify(async ({ multiValueQueryStringParameters }) => {
   const result = multiValueQueryStringParameters?.ids
@@ -26,9 +28,9 @@ export const updateRating = middify(async ({ body, pathParameters: { id } }) => 
   const bodyWithId = { ...body, id };
   const result = await getRatingController().update(bodyWithId);
   return createResponse(200, result);
-}).use([validator({ inputSchema: createInputSchema(ratingSchema) })]);
+}).use([ratingUpdateAuthorizer(), validator({ inputSchema: createInputSchema(ratingSchema) })]);
 
 export const deleteRating = middify(async ({ pathParameters: { id } }) => {
   const result = await getRatingController().delete(id);
   return createResponse(200, result);
-});
+}).use([ratingUpdateAuthorizer()]);
