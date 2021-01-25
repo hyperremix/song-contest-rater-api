@@ -8,10 +8,13 @@ export class ActDocument {
   artistName: string;
   @attribute()
   songName: string;
+  @attribute()
+  imageUrl: string;
 }
 
 export const defaultActDocument: ActDocument = {
   id: '84ce3ed6-a479-4ba4-86e1-d053638fd8a1',
   artistName: 'John Document',
   songName: 'I am John Doocument',
+  imageUrl: 'https://imageurl.example.com/img.jpg',
 };

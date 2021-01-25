@@ -10,6 +10,7 @@ export class ActDocumentMapper implements DocumentMapper<Act, ActDocument> {
     document.id = model.id;
     document.artistName = model.artistName;
     document.songName = model.songName;
+    document.imageUrl = model.imageUrl;
     return document;
   }
 
