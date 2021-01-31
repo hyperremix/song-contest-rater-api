@@ -1,4 +1,4 @@
-import { defaultRating } from '@hyperremix/song-contest-rater-model';
+import { defaultCompetition, defaultRating } from '@hyperremix/song-contest-rater-model';
 import { Builder } from 'builder-pattern';
 import 'reflect-metadata';
 import getUuidByString from 'uuid-by-string';
@@ -8,6 +8,7 @@ describe('RatingController', () => {
   let ratingController: RatingController;
 
   let ratingRepository: any;
+  let competitionRepository: any;
 
   const ratings = [defaultRating, Builder(defaultRating).id('othereid').build()];
 
@@ -21,7 +22,12 @@ describe('RatingController', () => {
       query: jest.fn(() => Promise.resolve([defaultRating])),
     };
 
-    ratingController = new RatingController(ratingRepository);
+    competitionRepository = {
+      get: jest.fn(() => Promise.resolve(defaultCompetition)),
+      update: jest.fn(),
+    };
+
+    ratingController = new RatingController(ratingRepository, competitionRepository);
   });
 
   describe('when creating', () => {

@@ -1,6 +1,8 @@
 import { DataMapper } from '@aws/dynamodb-data-mapper';
 import { ReflectiveInjector } from 'injection-js';
 import 'reflect-metadata';
+import { CompetitionDocumentMapper } from 'src/competition/data-access/competition-document.mapper';
+import { CompetitionRepository } from 'src/competition/data-access/competition.repository';
 import { createDataMapper } from 'src/shared/data-access/database-client.factory';
 import { DatabaseClient } from 'src/shared/data-access/database.client';
 import { RatingController } from './api/rating.controller';
@@ -12,7 +14,9 @@ export function getRatingController(): RatingController {
     { provide: DataMapper, useFactory: createDataMapper },
     DatabaseClient,
     RatingDocumentMapper,
+    CompetitionDocumentMapper,
     RatingRepository,
+    CompetitionRepository,
     RatingController,
   ]).get(RatingController);
 }
