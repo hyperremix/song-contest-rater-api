@@ -12,6 +12,12 @@ listUsers:
         path: users
         method: get
         cors: true
+        request:
+          template:
+            application/json: >
+              {
+                "ids" : "$input.params('ids')"
+              }
         authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:

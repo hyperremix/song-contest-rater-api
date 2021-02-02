@@ -13,8 +13,10 @@ export const createUser = middify(async ({ body }) => {
   return createResponse(201, result);
 }).use([validator({ inputSchema: createInputSchema(userSchema) })]);
 
-export const listUsers = middify(async () => {
-  const result = await getUserController().list();
+export const listUsers = middify(async ({ multiValueQueryStringParameters }) => {
+  const result = multiValueQueryStringParameters?.ids
+    ? await getUserController().query(multiValueQueryStringParameters.ids)
+    : await getUserController().list();
   return createResponse(200, result);
 }).use([adminAuthorizer()]);
 

@@ -65,4 +65,8 @@ export class UserController {
 
     await this.userRepository.update(user);
   }
+
+  public async query(ids: string[]): Promise<User[]> {
+    return await this.userRepository.query(ids);
+  }
 }
