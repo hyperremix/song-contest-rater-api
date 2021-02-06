@@ -51,6 +51,10 @@ initiateAvatarUpload:
       Action:
         - s3:PutObject
       Resource: arn:aws:s3:::${self:provider.environment.SONG_CONTEST_RATER_IMAGES_BUCKET}/*
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+      Resource: '*'
   events:
     - http:
         path: users/{id}/avatar
@@ -68,6 +72,11 @@ processUploadedAvatar:
         - s3:GetObject
         - s3:HeadObject
       Resource: arn:aws:s3:::${self:provider.environment.SONG_CONTEST_RATER_IMAGES_BUCKET}/*
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:UpdateItem
+      Resource: '*'
   events:
     - s3:
         bucket: ${self:provider.environment.SONG_CONTEST_RATER_IMAGES_BUCKET}
