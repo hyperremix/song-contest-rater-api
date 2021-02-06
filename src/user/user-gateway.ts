@@ -1,7 +1,6 @@
 import { userSchema } from '@hyperremix/song-contest-rater-model';
 import validator from '@middy/validator';
 import { S3Event } from 'aws-lambda';
-import { adminAuthorizer } from 'src/shared/api/admin-authorizer.middleware';
 import { createInputSchema } from 'src/shared/api/schema.factory';
 import { middify } from 'src/shared/api/third-party.middleware';
 import { createResponse } from '../shared/api/response.factory';
@@ -18,7 +17,7 @@ export const listUsers = middify(async ({ multiValueQueryStringParameters }) => 
     ? await getUserController().query(multiValueQueryStringParameters.ids)
     : await getUserController().list();
   return createResponse(200, result);
-}).use([adminAuthorizer()]);
+});
 
 export const getUser = middify(async ({ pathParameters: { id } }) => {
   const result = await getUserController().get(id);
