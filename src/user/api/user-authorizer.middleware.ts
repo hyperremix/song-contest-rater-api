@@ -1,5 +1,6 @@
 import createError from 'http-errors';
-import getUuidByString from 'uuid-by-string';
+import { isAdminUser } from 'src/shared/api/admin-user.validator';
+import { isCorrectUser } from './user.validator';
 
 const IS_OFFLINE = process.env.IS_OFFLINE;
 
@@ -16,17 +17,12 @@ export const userAuthorizer = () => {
         throw new createError.Unauthorized('Unauthorized');
       }
 
-      const userEmail = authorizer.claims?.['email'];
-      if (!userEmail) {
-        throw new createError.Forbidden('Token does not contain the required field "email"');
+      if (isAdminUser(authorizer)) {
+        next();
+        return;
       }
 
-      const userId = handler.event.pathParameters?.id;
-      if (!userId) {
-        throw new createError.NotFound();
-      }
-
-      if (userId !== getUuidByString(userEmail)) {
+      if (!isCorrectUser(authorizer, handler.event.pathParameters)) {
         throw new createError.Forbidden('You are not allowed to read or write someone elses data');
       }
 

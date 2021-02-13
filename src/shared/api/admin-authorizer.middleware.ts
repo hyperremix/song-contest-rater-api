@@ -1,4 +1,5 @@
 import createError from 'http-errors';
+import { isAdminUser } from './admin-user.validator';
 
 const IS_OFFLINE = process.env.IS_OFFLINE;
 
@@ -15,20 +16,7 @@ export const adminAuthorizer = () => {
         throw new createError.Unauthorized('Unauthorized');
       }
 
-      let userGroups = authorizer?.claims?.['cognito:groups'];
-      if (!userGroups) {
-        throw new createError.Forbidden('You do not have any role associated with your account');
-      }
-
-      if (typeof userGroups === 'string') {
-        userGroups = [userGroups];
-      }
-
-      if (!userGroups.length) {
-        throw new createError.Forbidden('You do not have any role associated with your account');
-      }
-
-      if (!userGroups.some((val) => val === 'Admin')) {
+      if (!isAdminUser(authorizer)) {
         throw new createError.Forbidden('You do not have the permission to access this resource');
       }
 
