@@ -1,17 +1,17 @@
 _type: export
 __export_format: 4
-__export_date: 2021-01-24T13:43:28.392Z
-__export_source: insomnia.desktop.app:v2020.5.2
+__export_date: 2021-04-01T10:51:32.665Z
+__export_source: insomnia.desktop.app:v2021.1.1
 resources:
   - _id: req_a5cc1d15ac9b420e81f381e1dc8028d2
     parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
-    modified: 1610879580812
+    modified: 1612611374077
     created: 1610878119533
     url: "{{ _.baseUrl }}/{{ _.endpoint
       }}/a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83/avatar"
     name: avatar
     description: ""
-    method: PUT
+    method: POST
     body:
       mimeType: application/json
       text: |-
@@ -23,7 +23,9 @@ resources:
       - name: Content-Type
         value: application/json
         id: pair_726980f2d3b442b2a1c2ad4818ad9291
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
     metaSortKey: -1610878119533
     isPrivate: false
     settingStoreCookies: true
@@ -52,7 +54,7 @@ resources:
     created: 1607264288611
     name: song-contest-rater
     description: ""
-    scope: null
+    scope: collection
     _type: workspace
   - _id: req_73a69ba33c9a43658bb0bcf6980f8a51
     parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
@@ -79,9 +81,9 @@ resources:
     _type: request
   - _id: req_5cc0fd462dcd4fb087beab4b478c0429
     parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
-    modified: 1611231616493
+    modified: 1613228935288
     created: 1610469438186
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/b0161fea-404c-5424-bed2-876cbce0fc3d"
     name: user
     description: ""
     method: PUT
@@ -89,14 +91,12 @@ resources:
       mimeType: application/json
       text: >-
         {
-        	"id": "a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c82",
-        	"firstname": "Fredrik",
-        	"lastname": "Pettersson",
-        	"email": "fredrik.pettersson.89@gmail.com",
-          "avatarUrl": "https://song-contest-rater-images-dev.s3.eu-central-1.amazonaws.com/uploads/a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83.jpg",
-        	"gravatarUrl": "https://s.gravatar.com/avatar/a38c89eba770032ba4c617ba97f3138e",
-        	"useGravatar": true
-        }
+            "firstname": "Jeannine",
+            "lastname": "Schuengel",
+            "email": "net@jeannine.schuengel.net",
+        		"avatarUrl": "https://song-contest-rater-images-prod.s3.eu-central-1.amazonaws.com/uploads/129410ea-8cf2-5383-9efd-cf710801cd3d.jpg",
+            "gravatarUrl": "https://s.gravatar.com/avatar/f32df26727603f1baf3ca7dded1cc593"
+          }
     parameters: []
     headers:
       - name: Content-Type
@@ -160,9 +160,30 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_e3dcc6ef00a24bb09c7b3df2b2410091
+    parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
+    modified: 1612201268075
+    created: 1612201195856
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}?ids=a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83"
+    name: query users
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1607266957267.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_f2d1db5478a141f48a63663cc7791135
     parentId: fld_a8dd3923007d4bd19980c59b0bdc07f4
-    modified: 1611493966323
+    modified: 1612612038817
     created: 1610280546569
     url: "{{ _.baseUrl }}/{{ _.endpoint }}"
     name: user
@@ -195,9 +216,9 @@ resources:
     _type: request
   - _id: req_32cb96288bbe4617a0269e7de237c35f
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
-    modified: 1610552089313
+    modified: 1611678317732
     created: 1607289441134
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/bd299215-81c7-42e7-bc97-6461619a2eab"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/3a477ff3-d920-4ab0-98e1-91ae5aff7eb4"
     name: act
     description: ""
     method: DELETE
@@ -231,19 +252,20 @@ resources:
     _type: request_group
   - _id: req_7e90a535dc5840fd9429f44796b48a48
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
-    modified: 1610552083912
+    modified: 1614449667109
     created: 1607287846720
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/bd299215-81c7-42e7-bc97-6461619a2eab"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/db0ebeeb-13fe-468d-9e38-2c9ac40ccf37"
     name: act
     description: ""
     method: PUT
     body:
       mimeType: application/json
-      text: |-
+      text: >-
         {
-        	"artistName": "updated artistName",
-        	"songName": "updated songName"
-        }
+            "artistName": "Eric Saade",
+            "songName": "Every Minute",
+            "imageUrl": "https://static.wikia.nocookie.net/we-are-one-song-contest/images/0/08/Eric_Saade.jpg"
+          }
     parameters: []
     headers:
       - name: Content-Type
@@ -332,7 +354,7 @@ resources:
     _type: request
   - _id: req_9b675b42250e4104ad1e546e6fdcedb2
     parentId: fld_065a85378b5e40feb9342fe7b899bb52
-    modified: 1607962741762
+    modified: 1614449546379
     created: 1607267666823
     url: "{{ _.baseUrl }}/{{ _.endpoint }}"
     name: act
@@ -340,10 +362,11 @@ resources:
     method: POST
     body:
       mimeType: application/json
-      text: |-
+      text: >-
         {
-        	"artistName": "Måns Zelmerlöw",
-        	"songName": "All I Want for Christmas Is You"
+          "artistName": "Eric Saade",
+          "songName": "Every Minute",
+          "imageUrl": "https://static.wikia.nocookie.net/we-are-one-song-contest/images/0/08/Eric_Saade.jpg/revision/latest?cb=20180602184848"
         }
     parameters: []
     headers:
@@ -364,9 +387,9 @@ resources:
     _type: request
   - _id: req_4a4cdfe5eb804b809147f6158b657a1f
     parentId: fld_4436c62203324d09b582aa75f90acfe5
-    modified: 1611495506591
+    modified: 1612629708238
     created: 1611486295457
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/83c71b33-3745-5d41-b77a-8fd06f8441b6"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/efcac662-1abe-5ec5-91b4-6420be4d6289"
     name: rating
     description: ""
     method: DELETE
@@ -400,9 +423,9 @@ resources:
     _type: request_group
   - _id: req_e9f023362b7640f1b717f2c474fbf580
     parentId: fld_4436c62203324d09b582aa75f90acfe5
-    modified: 1611495642571
+    modified: 1612292844815
     created: 1611486295454
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/83c71b33-3745-5d41-b77a-8fd06f8441b6"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/fcf9979e-4dfb-5731-9418-da20acdd3e4f"
     name: rating
     description: ""
     method: PUT
@@ -411,8 +434,8 @@ resources:
       text: |-
         {
         	"userId": "a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83",
-        	"competitionId": "1208ceb9-1e17-479a-a025-4230cef5cd7a",
-        	"actId": "f93c5f03-6c33-4c98-ab4f-7de60fcb46fc",
+        	"competitionId": "df07dab7-c2f8-42af-849a-ae651b3c3fb6",
+        	"actId": "971a4427-dc56-4850-b240-716e584a1a33",
         	"song": 1,
         	"singing": 2,
         	"show": 3,
@@ -461,7 +484,7 @@ resources:
     _type: request
   - _id: req_60b5bf91657a4b4288b609fc0422cc41
     parentId: fld_4436c62203324d09b582aa75f90acfe5
-    modified: 1611486325174
+    modified: 1613228640231
     created: 1611486295444
     url: "{{ _.baseUrl }}/{{ _.endpoint }}"
     name: all ratings
@@ -505,7 +528,7 @@ resources:
     _type: request
   - _id: req_cdad9e1008944ab4b43dceb60aec37e2
     parentId: fld_4436c62203324d09b582aa75f90acfe5
-    modified: 1611495467953
+    modified: 1611678627930
     created: 1611486295423
     url: "{{ _.baseUrl }}/{{ _.endpoint }}"
     name: rating
@@ -516,8 +539,8 @@ resources:
       text: |-
         {
         	"userId": "a5bf4a71-f2f7-5a0f-8c8e-32ba6e034c83",
-        	"competitionId": "1208ceb9-1e17-479a-a025-4230cef5cd7a",
-        	"actId": "f93c5f03-6c33-4c98-ab4f-7de60fcb46fc",
+        	"competitionId": "df07dab7-c2f8-42af-849a-ae651b3c3fb6",
+        	"actId": "971a4427-dc56-4850-b240-716e584a1a33",
         	"song": 1,
         	"singing": 2,
         	"show": 3,
@@ -579,22 +602,31 @@ resources:
     _type: request_group
   - _id: req_360ed7d4bffe472d9bcebd137eb483d8
     parentId: fld_9bc15434b88a478bb4892db6cba8d8a2
-    modified: 1610552110847
+    modified: 1615055467975
     created: 1608139127739
-    url: "{{ _.baseUrl }}/{{ _.endpoint }}/3c88c6c5-2751-4e5e-8e20-a39b1c0c86a2"
+    url: "{{ _.baseUrl }}/{{ _.endpoint }}/f99f5968-20a2-49d3-b0c7-88a234ad9ec2"
     name: competition
     description: ""
     method: PUT
     body:
       mimeType: application/json
-      text: |-
+      text: >-
         {
-          "description": "Quarterfinal",
+          "description": "Second Chance",
           "cityName": "Stockholm",
           "countryName": "Sweden",
-          "startTime": "{% now 'iso-8601', '' %}",
-          "imageUrl": "https://imageurl.example.com/img.jpg",
-          "actIds": ["84ce3ed6-a479-4ba4-86e1-d053638fd8a1"]
+          "startTime": "2021-03-06T19:00:00.000Z",
+          "imageUrl": "https://assets.bucketlistly.blog/sites/5adf778b6eabcc00190b75b1/content_entry5adf77af6eabcc00190b75b6/5b0bc7fd2819f807ebcd2ccf/files/stockholm-3-days-what-to-do-main-image.jpg",
+          "actIds": [
+            "84adf0ce-a34e-4d85-80c8-9546eb4c8ae6",
+            "edbee2e1-eab9-4ea1-9ea4-bb889d1cc1d8",
+            "3ccf68ba-599f-4347-bb41-bedd2be14f51",
+            "9ae2f985-17f6-4021-83a4-143511f8fbbe",
+            "712cd7ab-98ee-452d-9c8a-2065413cdc5e",
+            "ca7b7255-bf8c-499c-b85b-91091992c083",
+            "e90279a5-335d-4634-af47-f6a0daf6192c",
+            "bd201a4b-e405-4f54-8756-b0da5b5c6755"
+          ]
         }
     parameters: []
     headers:
@@ -661,7 +693,7 @@ resources:
     _type: request
   - _id: req_cd53bb32ca3e431d9e83ee8c7bc17907
     parentId: fld_9bc15434b88a478bb4892db6cba8d8a2
-    modified: 1611488049562
+    modified: 1615657626407
     created: 1608139127732
     url: "{{ _.baseUrl }}/{{ _.endpoint }}"
     name: competition
@@ -671,12 +703,25 @@ resources:
       mimeType: application/json
       text: >-
         {
-          "description": "Second Chance",
+          "description": "Final",
           "cityName": "Stockholm",
           "countryName": "Sweden",
-          "startTime": "{% now 'iso-8601', '' %}",
-          "imageUrl": "https://www.ab-in-den-urlaub.de/magazin/wp-content/uploads/2020/03/1583501813_Blick-auf-die-Altstadt-Gamla-Stan.jpg",
-          "actIds": ["646f4e1f-3a09-42f0-8fe1-d6e8888c33d2"]
+          "startTime": "2021-03-13T19:00:00.000Z",
+          "imageUrl": "https://civitas.eu/sites/default/files/stockholm-438231_1920.jpg",
+          "actIds": [
+              "fa8f48c8-5895-4a6c-9c85-aeb5d921f88e",
+              "e90279a5-335d-4634-af47-f6a0daf6192c",
+              "ec5afee3-8a1e-476c-8196-2d41a8727ae0",
+              "9cb27712-3f7e-4b59-b903-447e7d14594b",
+              "9ae2f985-17f6-4021-83a4-143511f8fbbe",
+              "00a29f77-6f57-451a-b651-22e2609ae744",
+              "ce864878-7ff1-48e8-b845-03f798ec0f80",
+              "84adf0ce-a34e-4d85-80c8-9546eb4c8ae6",
+              "ca7b7255-bf8c-499c-b85b-91091992c083",
+              "db0ebeeb-13fe-468d-9e38-2c9ac40ccf37",
+              "bb15c970-3c0c-46f3-a78e-5d5f8ab312fd",
+              "863b4089-74d2-4095-b235-5a6ac0cb529c"
+        	]
         }
     parameters: []
     headers:
